@@ -70,13 +70,3 @@ public class Address {
         this.persons = persons;
     }
 }
-/*
-* Person(id, name)
-* 1 "John"
-* Address(id, name, address_fk_id)
-*
-* 1     1
-* 2     1
-*
-*
-* */

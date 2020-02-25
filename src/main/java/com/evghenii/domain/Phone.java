@@ -12,7 +12,7 @@ public class Phone {
 
     private String phoneNumber;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "person_fk_id")
     private Person person;
 

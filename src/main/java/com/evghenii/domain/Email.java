@@ -12,8 +12,8 @@ public class Email {
 
     private String email;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "email_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "person_fk_id")
     private Person person;
 
     public Email() {
