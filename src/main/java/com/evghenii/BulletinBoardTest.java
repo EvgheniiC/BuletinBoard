@@ -7,19 +7,24 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.ArrayList;
-import java.util.Collection;
 
 
 public class BulletinBoardTest {
 
-    private static Collection<Ad> collectionAd = new ArrayList<>();
+
     public static void main(String[] args) {
 
-
         Rubric rubricWithoutAd = new Rubric();
-        Rubric rubricWithAd = new Rubric(collectionAd);
 
+        Rubric rubricWithAd = new Rubric();
+
+        Ad ad = null;
+        Ad ad1 = null;
+        Ad ad2 = null;
+
+        rubricWithAd.addAd(ad);
+        rubricWithAd.addAd(ad1);
+        rubricWithAd.addAd(ad2);
 
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("myjpa");
 
@@ -29,10 +34,10 @@ public class BulletinBoardTest {
 
         transaction.begin();
 
-
         transaction.commit();
 
         em.close();
+
         factory.close();
 
 

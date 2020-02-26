@@ -1,24 +1,48 @@
 package com.evghenii.domain;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
+@Entity
 public class Rubric {
 
-    private Collection<Ad> collectionAd = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "rubric_id")
+    private int id;
 
-    public Rubric(Collection<Ad> collectionAd) {
-        this.collectionAd = collectionAd;
+    @OneToMany(mappedBy = "rubric", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    private Set<Ad> ads = new HashSet<>();
+
+   // private Collection<Ad> collectionAd = new ArrayList<>();
+
+    public Rubric(Set<Ad> ads) {
+        this.ads = ads;
     }
 
     public Rubric() {
     }
 
-    public Collection<Ad> getCollectionAd() {
-        return collectionAd;
+    public int getId() {
+        return id;
     }
 
-    public void setCollectionAd(Collection<Ad> collectionAd) {
-        this.collectionAd = collectionAd;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Set<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(Set<Ad> ads) {
+        this.ads = ads;
+    }
+
+    public void addAd(Ad ad) {
+        ads.add(ad);
     }
 }

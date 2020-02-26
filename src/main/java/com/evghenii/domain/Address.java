@@ -1,8 +1,6 @@
 package com.evghenii.domain;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Address {
@@ -18,8 +16,8 @@ public class Address {
 
     private int houseNumber;
 
-    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
-    private Set<Person> persons = new HashSet<>();
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    private Person person;
 
     public Address() {
     }
@@ -62,11 +60,11 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
-    public Set<Person> getPersons() {
-        return persons;
+    public Person getPerson() {
+        return person;
     }
 
-    public void setPersons(Set<Person> persons) {
-        this.persons = persons;
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

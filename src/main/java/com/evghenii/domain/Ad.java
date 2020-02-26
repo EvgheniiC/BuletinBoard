@@ -25,15 +25,21 @@ public class Ad {
     @JoinColumn(name = "person_fk_id")
     private Person person;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "rubric_fk_id")
+    private Rubric rubric;
+
+
     public Ad() {
     }
 
-    public Ad(String title, LocalDate date, String text, BigDecimal price, Person person) {
+    public Ad(String title, LocalDate date, String text, BigDecimal price, Person person, Rubric rubric) {
         this.title = title;
         this.date = date;
         this.text = text;
         this.price = price;
         this.person = person;
+        this.rubric = rubric;
     }
 
     public int getId() {
@@ -82,5 +88,13 @@ public class Ad {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public Rubric getRubric() {
+        return rubric;
+    }
+
+    public void setRubric(Rubric rubric) {
+        this.rubric = rubric;
     }
 }
