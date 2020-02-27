@@ -5,4 +5,6 @@ import com.evghenii.domain.Person;
 public interface PersonDAO {
     void save(Person person);
     void update(Person person);
+    void deleteById(int id);
+
 }

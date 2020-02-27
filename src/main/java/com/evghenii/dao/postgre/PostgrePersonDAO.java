@@ -13,4 +13,9 @@ public class PostgrePersonDAO implements PersonDAO {
     public void update(Person person) {
         //logic for updating via em;
     }
+
+    @Override
+    public void deleteById(int id) {
+
+    }
 }
