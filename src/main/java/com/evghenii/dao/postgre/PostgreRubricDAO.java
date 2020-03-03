@@ -13,4 +13,9 @@ public class PostgreRubricDAO implements RubricDAO {
     public void update(Rubric rubric) {
 
     }
+
+    @Override
+    public void delete(Rubric rubric) {
+
+    }
 }

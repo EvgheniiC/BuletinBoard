@@ -26,21 +26,29 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void update(Person person) {
+        personDAO.update(person);
 
     }
 
     @Override
     public void deleteById(int id) {
+        personDAO.deleteById(id);
 
     }
 
     @Override
     public List<Person> findAll() {
-        return null;
+
+        return personDAO.findAll();
     }
 
     @Override
     public List<Person> findPersonByName(String name) {
-        return null;
+        return personDAO.findPersonByName(name);
+    }
+
+    @Override
+    public List<Person> findPersonById(int id) {
+        return personDAO.findPersonById(id);
     }
 }

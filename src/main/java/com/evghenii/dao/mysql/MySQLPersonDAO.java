@@ -1,12 +1,10 @@
 package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.PersonDAO;
-import com.evghenii.domain.Ad;
 import com.evghenii.domain.Person;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Set;
 
 public class MySQLPersonDAO implements PersonDAO {
     public static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("myjpa");
@@ -56,7 +54,7 @@ public class MySQLPersonDAO implements PersonDAO {
         em.close();
     }
 
-    public Person findPersonByName(String name) {
+    public List<Person> findPersonByName(String name) {
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -71,11 +69,11 @@ public class MySQLPersonDAO implements PersonDAO {
 
         em.close();
 
-        return query.getSingleResult();
+        return query.getResultList();
 
     }
 
-    public Person findPersonById(int id) {
+    public List<Person> findPersonById(int id) {
 
         EntityManager em = FACTORY.createEntityManager();
 
@@ -91,10 +89,12 @@ public class MySQLPersonDAO implements PersonDAO {
 
         em.close();
 
-        return query.getSingleResult();
+        return query.getResultList();
     }
 
-    public Set<Ad> findAllAdByPerson(int id) {
+
+    @Override
+    public List<Person> findAll() {
 
         EntityManager em = FACTORY.createEntityManager();
 
@@ -102,38 +102,12 @@ public class MySQLPersonDAO implements PersonDAO {
 
         transaction.begin();
 
-        Person person = em.find(Person.class,id);
-
-        Set<Ad> allAds = person.getAds();
+        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p ", Person.class);
 
         transaction.commit();
 
         em.close();
 
-        return allAds;
+        return query.getResultList();
     }
-
-
-    public void deleteAllAdByPerson(int id){
-        EntityManager em = FACTORY.createEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
-        Person person = em.find(Person.class,id);
-
-        Set<Ad> allAds = person.getAds();
-
-        person.removeAlldAd(allAds);
-
-
-        transaction.commit();
-
-        em.close();
-
-    }
-
-
-
 }

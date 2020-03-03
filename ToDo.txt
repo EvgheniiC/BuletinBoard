@@ -3,4 +3,4 @@
 3) CascadeType on One side +
 4) DAO for all domains +
 5) Service for all domains +
-6) From 1 to 6 section
+6) From 1 to 6 section+
