@@ -54,7 +54,7 @@ public class MySQLPersonDAO implements PersonDAO {
         em.close();
     }
 
-    public List<Person> findPersonByName(String name) {
+    public Person findPersonByName(String name) {
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -69,11 +69,11 @@ public class MySQLPersonDAO implements PersonDAO {
 
         em.close();
 
-        return query.getResultList();
+        return query.getSingleResult();
 
     }
 
-    public List<Person> findPersonById(int id) {
+    public Person findPersonById(int id) {
 
         EntityManager em = FACTORY.createEntityManager();
 
@@ -89,7 +89,7 @@ public class MySQLPersonDAO implements PersonDAO {
 
         em.close();
 
-        return query.getResultList();
+        return query.getSingleResult();
     }
 
 

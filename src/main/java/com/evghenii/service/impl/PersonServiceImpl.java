@@ -43,12 +43,12 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> findPersonByName(String name) {
+    public Person findPersonByName(String name) {
         return personDAO.findPersonByName(name);
     }
 
     @Override
-    public List<Person> findPersonById(int id) {
+    public Person findPersonById(int id) {
         return personDAO.findPersonById(id);
     }
 }

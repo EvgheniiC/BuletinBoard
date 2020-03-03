@@ -8,8 +8,8 @@ public interface PersonDAO {
     void save(Person person);
     void update(Person person);
     void deleteById(int id);
-    List<Person> findPersonByName(String name);
-    List<Person> findPersonById(int id);
+    Person findPersonByName(String name);
+    Person findPersonById(int id);
     List<Person> findAll();
 
 }

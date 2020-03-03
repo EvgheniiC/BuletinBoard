@@ -5,7 +5,7 @@ import com.evghenii.domain.Person;
 import java.util.List;
 
 public interface PersonService extends CRUDService<Person> {
-    List<Person> findPersonByName(String name);
-    List<Person> findPersonById(int id);
+    Person findPersonByName(String name);
+    Person findPersonById(int id);
 
 }

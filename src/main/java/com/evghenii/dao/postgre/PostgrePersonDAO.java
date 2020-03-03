@@ -22,12 +22,12 @@ public class PostgrePersonDAO implements PersonDAO {
     }
 
     @Override
-    public List<Person> findPersonByName(String name) {
+    public Person findPersonByName(String name) {
         return null;
     }
 
     @Override
-    public List<Person> findPersonById(int id) {
+    public Person findPersonById(int id) {
         return null;
     }
 
