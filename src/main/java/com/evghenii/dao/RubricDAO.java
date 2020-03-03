@@ -6,4 +6,7 @@ public interface RubricDAO {
     void save(Rubric rubric);
 
     void update(Rubric rubric);
+
+    void delete(Rubric rubric);
+
 }

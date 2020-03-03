@@ -8,7 +8,7 @@ RU
 						автор(телефоны(отдельная сущность), адрес(отдельная сущность), имя, э/почта(отдельная сущность)).
 2) Редактировать объявление, личную информацию автора и рубрику.
 3) Удалять объявление/рубрику.
-4) Удалять все объявления автора.
+4) Удалять все объявления автора.?
 5) Показывать объявления из одной рубрики и нескольких рубрик.
 6) Фильтрации(объявления автора, по ключевому слову, по дате).
 7) Выводить определенное количество объявлений на странице(pagination).
@@ -33,40 +33,7 @@ Price to
 - обязательно должна присутствовать валидация данных.
 
 
-En
-
-Create Bulletin Board application.
-An author can have several ads in different sections.
-The application should allow:
-1) Create:
-- A heading with / without announcements.
-- Announcement (name, publication date, announcement text, cost of service,
-author (telephones (separate entity), address (separate entity), name, e-mail (separate entity)).
-2) Edit the announcement, the author’s personal information and the heading.
-3) Delete the announcement / category.
-4) Delete all ads of the author.
-5) Show ads from one category and several categories.
-6) Filtration (author’s ads, by keyword, by date).
-7) Display a certain number of ads on the page (pagination).
-8) Subscribe the author to ads with the specified parameters (send a specific HTML template by mail).
-9) Delete inactive ad (Scheduling).
-
-To point 8, create a collection of domains with fields:
-Category
-String title
-Price from
-Price to
-
-
-In the application, use Spring 5, JPA (JPQL, NamedQueries, Criteria queries).
-**** Technical requirements****
-The application should:
-- be as densely covered with tests.
-- contain a clear logical separation between presentation, logic and data source.
-- assembly of the project / start of tests should be done by gradle tools.
-- the finished application should be available on the bitbucket repository.
-- All key points of the application logic must contain explanatory JavaDocs.
-- data validation must be present.
-
-
-
+1 В Interface только void методы?
+2 findAdById найти(удалить) что-то у кого-то, в каком классе писать? AdDAO или PersonDAO
+3 почему removeAd,addAd пищеи в Rubric, а не в RubricDAO,какие методы характерны для DAO
+4 Пока сделал без проверок

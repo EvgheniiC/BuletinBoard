@@ -12,16 +12,16 @@ public class Rubric {
     @Column(name = "rubric_id")
     private int id;
 
+    private String name;
+
     @OneToMany(mappedBy = "rubric", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
     private Set<Ad> ads = new HashSet<>();
 
-   // private Collection<Ad> collectionAd = new ArrayList<>();
+    public Rubric() {
+    }
 
     public Rubric(Set<Ad> ads) {
         this.ads = ads;
-    }
-
-    public Rubric() {
     }
 
     public int getId() {
@@ -40,7 +40,20 @@ public class Rubric {
         this.ads = ads;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void addAd(Ad ad) {
         ads.add(ad);
     }
+
+    public void removedAd(Ad ad) {
+        ads.remove(ad);
+    }
+
 }

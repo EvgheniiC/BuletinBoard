@@ -92,4 +92,37 @@ public class Person {
     public void setAds(Set<Ad> ads) {
         this.ads = ads;
     }
+
+    public void removedAd(Ad ad) {
+        ads.remove(ad);
+    }
+
+    public void adddAd(Ad ad) {
+        ads.add(ad);
+    }
+
+    public void removeAlldAd(Set<Ad> ad) {
+        ads.removeAll(ad);
+    }
+
+    public void removePhone(Phone phone) {
+        phones.remove(phone);
+    }
+
+    public void addPhone(Phone phone) {
+        phones.add(phone);
+    }
+
+    public void addEmail(Email email) {
+        emails.add(email);
+    }
+
+    public void removeEmail(Email email) {
+        emails.remove(email);
+    }
+
+
+
+
+
 }

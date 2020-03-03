@@ -4,6 +4,10 @@ import com.evghenii.domain.Ad;
 
 public interface AdDAO {
     void save(Ad ad);
+
     void update(Ad ad);
+
+    void delete(Ad ad);
+
 
 }
