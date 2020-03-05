@@ -3,7 +3,7 @@ package com.evghenii.dao.mysql;
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
 import com.evghenii.domain.Person;
-import com.evghenii.domain.Rubric;
+import org.hibernate.Criteria;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -38,7 +38,9 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        em.merge(ad);
+        Ad mergedAd = em.merge(ad);
+
+        em.persist(mergedAd);
 
         transaction.commit();
 
@@ -53,7 +55,9 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        em.remove(id);
+        Ad ad = em.find(Ad.class,id);
+
+        em.remove(ad);
 
         transaction.commit();
 
@@ -68,17 +72,18 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a ", Ad.class);
-
+        TypedQuery<Ad> query = em.createQuery("FROM Ad a ", Ad.class);
 
         transaction.commit();
 
+        List<Ad> list = query.getResultList();
+
         em.close();
 
-        return query.getResultList();
+        return list;
     }
 
-    public List<Ad> findAdById(int id) {
+    public Ad findAdById(int id) {
 
         EntityManager em = FACTORY.createEntityManager();
 
@@ -93,9 +98,11 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.commit();
 
+        Ad singleResult = query.getSingleResult();
+
         em.close();
 
-        return query.getResultList();
+        return singleResult;
     }
 
     @Override
@@ -113,9 +120,11 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.commit();
 
+        List<Ad> resultList = query.getResultList();
+
         em.close();
 
-        return query.getResultList();
+        return resultList;
     }
 
     @Override
@@ -133,18 +142,22 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.commit();
 
+        List<Ad> resultList = query.getResultList();
+
         em.close();
 
-        return query.getResultList();
+        return resultList;
     }
 
     @Override
-    public Set<Ad> findAllAdByPerson(Person person) {
+    public Set<Ad> findAllAdByPersonById(int id) {// переписать
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
+
+        Person person = em.find(Person.class, id);
 
         Set<Ad> allAds = person.getAds();
 
@@ -171,39 +184,48 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.commit();
 
+        List<Ad> resultList = query.getResultList();
+
         em.close();
 
-        return query.getResultList();
+        return resultList;
     }
 
     @Override
-    public List<Ad> findByRubric(Rubric rubric) {
+    public Ad findAdInRubricById(int id) {
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.id = :rubric", Ad.class);
+        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.rubric.id = :rubricId", Ad.class);
 
 
-        query.setParameter("rubric", rubric);
+        query.setParameter("rubricId", id);
 
         transaction.commit();
 
+        Ad resultList = query.getSingleResult();
+
         em.close();
 
-        return query.getResultList();
+        return resultList;
     }
 
-    public void deleteAllAdByPerson(String name) {
+    public void deleteAllAdByPersonById(int id) {
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
+        /*Criteria criteria = findAllAdByPersonById(id);
 
-        Person person = em.find(Person.class, name);
+        Criteria criteria = em.createCriteria(Person.class);*/
+
+
+
+        Person person = em.find(Person.class, id);//change to one query
 
         Set<Ad> allAds = person.getAds();
 

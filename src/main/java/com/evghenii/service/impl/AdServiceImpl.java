@@ -34,20 +34,14 @@ public class AdServiceImpl implements AdService {
         return adDAO.findByTitle(title);
     }
 
-    @Override
-    public Set<Ad> findAllAdByPerson(Person person) {
-        return adDAO.findAllAdByPerson(person);
-    }
+
 
     @Override
     public List<Ad> findByPrice(BigDecimal bigDecimal) {
         return adDAO.findByPrice(bigDecimal);
     }
 
-    @Override
-    public List<Ad> findByRubric(Rubric rubric) {
-        return adDAO.findByRubric(rubric);
-    }
+
 
     @Override
     public void save(Ad ad) {
@@ -69,13 +63,24 @@ public class AdServiceImpl implements AdService {
         return adDAO.findAll();
     }
 
+
     @Override
-    public void deleteAllAdByPerson(String name) {
-        adDAO.deleteAllAdByPerson(name);
+    public Set<Ad> findAllAdByPersonById(int id) {
+        return adDAO.findAllAdByPersonById(id);
     }
 
     @Override
-    public List<Ad> findAdById(int id) {
+    public Ad findAdInRubricById(int id) {
+        return adDAO.findAdInRubricById(id);
+    }
+
+    @Override
+    public void deleteAllAdByPersonById(int id) {
+        adDAO.deleteAllAdByPersonById(id);
+    }
+
+    @Override
+    public Ad findAdById(int id) {
         return adDAO.findAdById(id);
     }
 }

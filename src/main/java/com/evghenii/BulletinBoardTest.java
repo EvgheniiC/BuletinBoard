@@ -1,12 +1,16 @@
 package com.evghenii;
 
 import com.evghenii.domain.Ad;
+import com.evghenii.domain.Address;
+import com.evghenii.domain.Person;
 import com.evghenii.domain.Rubric;
+import com.evghenii.service.PersonService;
+import com.evghenii.service.RubricService;
+import com.evghenii.service.impl.PersonServiceImpl;
+import com.evghenii.service.impl.RubricServiceImp;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 
 public class BulletinBoardTest {
@@ -14,31 +18,64 @@ public class BulletinBoardTest {
 
     public static void main(String[] args) {
 
-        Rubric rubricWithoutAd = new Rubric();
+        PersonService personService = new PersonServiceImpl();
 
-        Rubric rubricWithAd = new Rubric();
+        RubricService rubricService = new RubricServiceImp();
 
-        Ad ad = null;
-        Ad ad1 = null;
-        Ad ad2 = null;
+        Rubric rubricWithoutAd = new Rubric("Cars");
 
-        rubricWithAd.addAd(ad);
-        rubricWithAd.addAd(ad1);
-        rubricWithAd.addAd(ad2);
+        Rubric rubricWithAd = new Rubric("Mobile");
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("myjpa");
+       /* LocalDate today = LocalDate.now();
 
-        EntityManager em = factory.createEntityManager();
 
-        EntityTransaction transaction = em.getTransaction();
+        Ad ad = new Ad("Selling", today, "Auto", new BigDecimal(1000), rubricWithAd);
+        Ad ad1 = new Ad("Bey", today, "Auto", new BigDecimal(2000), rubricWithAd);
+        Ad ad2 = new Ad("Сhanging", today, "Auto", new BigDecimal(2500), rubricWithAd);
 
-        transaction.begin();
 
-        transaction.commit();
+        rubricService.save(rubricWithAd);
+        rubricService.save(rubricWithoutAd);
 
-        em.close();
+        Rubric cars = rubricService.findRubricByName("Cars");
 
-        factory.close();
+        ad.setRubric(cars);
+        ad1.setRubric(cars);
+        ad2.setRubric(cars);
+
+        //cars.getAds().removeIf(a -> a.getText().equals("Buy"));
+
+        Address address = new Address("Berlin", "berlinerStr", 15);
+        Address address1 = new Address("Bremen", "BremenStr", 20);
+
+        Person ivan = new Person("Ivan", "12345");
+        ivan.addAd(ad);
+        ad.setPerson(ivan);
+        ivan.setAddress(address);
+        address.setPerson(ivan);
+
+        Person vasiliy = new Person("Vasia", "55555");
+        vasiliy.setAddress(address1);
+        address1.setPerson(vasiliy);
+        vasiliy.addAd(ad2);
+        ad2.setPerson(vasiliy);
+        vasiliy.addAd(ad1);
+        ad1.setPerson(vasiliy);
+
+        personService.save(ivan);
+        personService.save(vasiliy);*/
+
+
+        personService.deleteById(3);
+
+       /* for (Person p: personService.findAll()) {
+            System.out.println(p.getName());
+
+        }*/
+
+     //   personService.findAll();
+
+
 
 
     }

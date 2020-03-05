@@ -1,8 +1,6 @@
 package com.evghenii.dao;
 
 import com.evghenii.domain.Ad;
-import com.evghenii.domain.Person;
-import com.evghenii.domain.Rubric;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -18,18 +16,18 @@ public interface AdDAO {
 
     List<Ad> findAll();
 
-    List<Ad> findAdById(int id);
+    Ad findAdById(int id);
 
     List<Ad> findAllByDate(LocalDate date);
 
     List<Ad> findByTitle(String title);
 
-    Set<Ad> findAllAdByPerson(Person person);
+    Set<Ad> findAllAdByPersonById(int id);
 
     List<Ad> findByPrice(BigDecimal bigDecimal);
 
-    List<Ad> findByRubric(Rubric rubric);
+    Ad findAdInRubricById(int id);
 
-    void deleteAllAdByPerson(String name);
+    void deleteAllAdByPersonById(int id);
 
 }

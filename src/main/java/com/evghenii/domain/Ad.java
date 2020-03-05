@@ -21,7 +21,7 @@ public class Ad {
 
     private BigDecimal price;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "person_fk_id")
     private Person person;
 
@@ -33,12 +33,11 @@ public class Ad {
     public Ad() {
     }
 
-    public Ad(String title, LocalDate date, String text, BigDecimal price, Person person, Rubric rubric) {
+    public Ad( String title, LocalDate date, String text, BigDecimal price, Rubric rubric) {
         this.title = title;
         this.date = date;
         this.text = text;
         this.price = price;
-        this.person = person;
         this.rubric = rubric;
     }
 

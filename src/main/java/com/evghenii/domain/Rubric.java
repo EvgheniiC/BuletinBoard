@@ -20,8 +20,8 @@ public class Rubric {
     public Rubric() {
     }
 
-    public Rubric(Set<Ad> ads) {
-        this.ads = ads;
+    public Rubric(String name) {
+        this.name = name;
     }
 
     public int getId() {

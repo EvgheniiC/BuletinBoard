@@ -32,7 +32,9 @@ public class MySQLPersonDAO implements PersonDAO {
 
         transaction.begin();
 
-        em.merge(person);
+        Person mergePerson = em.merge(person);
+
+        em.persist(mergePerson);
 
         transaction.commit();
 
@@ -47,7 +49,9 @@ public class MySQLPersonDAO implements PersonDAO {
 
         transaction.begin();
 
-        em.remove(id);
+        Person person = em.find(Person.class,id);
+
+        em.remove(person);
 
         transaction.commit();
 
@@ -67,9 +71,11 @@ public class MySQLPersonDAO implements PersonDAO {
 
         transaction.commit();
 
+        Person singleResult = query.getSingleResult();
+
         em.close();
 
-        return query.getSingleResult();
+        return singleResult;
 
     }
 
@@ -87,9 +93,11 @@ public class MySQLPersonDAO implements PersonDAO {
 
         transaction.commit();
 
+        Person singleResult = query.getSingleResult();
+
         em.close();
 
-        return query.getSingleResult();
+        return singleResult;
     }
 
 
@@ -106,8 +114,10 @@ public class MySQLPersonDAO implements PersonDAO {
 
         transaction.commit();
 
+        List<Person> resultList = query.getResultList();
+
         em.close();
 
-        return query.getResultList();
+        return resultList;
     }
 }

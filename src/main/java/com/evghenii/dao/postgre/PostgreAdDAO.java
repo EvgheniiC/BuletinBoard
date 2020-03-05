@@ -21,8 +21,6 @@ public class PostgreAdDAO implements AdDAO {
 
     }
 
-
-
     @Override
     public void deleteById(int id) {
 
@@ -34,7 +32,7 @@ public class PostgreAdDAO implements AdDAO {
     }
 
     @Override
-    public List<Ad> findAdById(int id) {
+    public Ad findAdById(int id) {
         return null;
     }
 
@@ -49,7 +47,7 @@ public class PostgreAdDAO implements AdDAO {
     }
 
     @Override
-    public Set<Ad> findAllAdByPerson(Person person) {
+    public Set<Ad> findAllAdByPersonById(int id) {
         return null;
     }
 
@@ -59,13 +57,12 @@ public class PostgreAdDAO implements AdDAO {
     }
 
     @Override
-    public List<Ad> findByRubric(Rubric rubric) {
+    public Ad findAdInRubricById(int id) {
         return null;
     }
 
     @Override
-    public void deleteAllAdByPerson(String name) {
+    public void deleteAllAdByPersonById(int id) {
 
     }
-
 }

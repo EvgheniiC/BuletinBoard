@@ -1,6 +1,3 @@
-1) Change Date to LocalDate +
-2) BigDecimal +
-3) CascadeType on One side +
-4) DAO for all domains +
-5) Service for all domains +
-6) From 1 to 6 section+
+1) Перенести em.close +
+2) Criteria query
+3) Hibernate validator в Sevice

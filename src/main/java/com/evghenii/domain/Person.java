@@ -32,7 +32,7 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, String password, String email) {
+    public Person(String name, String password) {
         this.name = name;
         this.password = password;
     }
@@ -97,7 +97,7 @@ public class Person {
         ads.remove(ad);
     }
 
-    public void adddAd(Ad ad) {
+    public void addAd(Ad ad) {
         ads.add(ad);
     }
 

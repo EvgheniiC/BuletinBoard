@@ -33,7 +33,9 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.begin();
 
-        em.merge(rubric);
+        Rubric mergeRubric = em.merge(rubric);
+
+        em.persist(mergeRubric);
 
         transaction.commit();
 
@@ -49,7 +51,9 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.begin();
 
-        em.remove(id);
+        Rubric rubric = em.find(Rubric.class,id);
+
+        em.remove(rubric);
 
         transaction.commit();
 
@@ -69,9 +73,11 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.commit();
 
+        Rubric rubric = query.getSingleResult();
+
         em.close();
 
-        return query.getSingleResult();
+        return rubric;
 
     }
 
@@ -86,9 +92,11 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.commit();
 
+        List<Rubric> resultList = query.getResultList();
+
         em.close();
 
-        return query.getResultList();
+        return resultList;
 
     }
 
