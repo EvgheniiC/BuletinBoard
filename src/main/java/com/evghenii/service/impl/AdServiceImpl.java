@@ -3,8 +3,6 @@ package com.evghenii.service.impl;
 import com.evghenii.dao.AdDAO;
 import com.evghenii.dao.mysql.MySQLAdDAO;
 import com.evghenii.domain.Ad;
-import com.evghenii.domain.Person;
-import com.evghenii.domain.Rubric;
 import com.evghenii.service.AdService;
 
 import java.math.BigDecimal;
@@ -35,12 +33,10 @@ public class AdServiceImpl implements AdService {
     }
 
 
-
     @Override
     public List<Ad> findByPrice(BigDecimal bigDecimal) {
         return adDAO.findByPrice(bigDecimal);
     }
-
 
 
     @Override
@@ -65,12 +61,12 @@ public class AdServiceImpl implements AdService {
 
 
     @Override
-    public Set<Ad> findAllAdByPersonById(int id) {
+    public List<Ad> findAllAdByPersonById(int id) {
         return adDAO.findAllAdByPersonById(id);
     }
 
     @Override
-    public Ad findAdInRubricById(int id) {
+    public List<Ad> findAdInRubricById(int id) {
         return adDAO.findAdInRubricById(id);
     }
 

@@ -88,7 +88,7 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.begin();
 
-        TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric ", Rubric.class);
+        TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r", Rubric.class);
 
         transaction.commit();
 

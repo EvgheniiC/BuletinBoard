@@ -14,11 +14,11 @@ public interface AdService extends CRUDService<Ad> {
 
     List<Ad> findByTitle(String title);
 
-    Set<Ad> findAllAdByPersonById(int id);
+    List<Ad> findAllAdByPersonById(int id);
 
     List<Ad> findByPrice(BigDecimal bigDecimal);
 
-    Ad findAdInRubricById(int id);
+    List<Ad> findAdInRubricById(int id);
 
     void deleteAllAdByPersonById(int id);
 

@@ -2,14 +2,11 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
-import com.evghenii.domain.Person;
-import org.hibernate.Criteria;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class MySQLAdDAO implements AdDAO {
     public static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("myjpa");
@@ -55,7 +52,7 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        Ad ad = em.find(Ad.class,id);
+        Ad ad = em.find(Ad.class, id);
 
         em.remove(ad);
 
@@ -113,8 +110,7 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.id = :date", Ad.class);
-
+        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.date = :date", Ad.class);
 
         query.setParameter("date", date);
 
@@ -135,7 +131,7 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.id = :title", Ad.class);
+        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.title = :title", Ad.class);
 
 
         query.setParameter("title", title);
@@ -150,22 +146,24 @@ public class MySQLAdDAO implements AdDAO {
     }
 
     @Override
-    public Set<Ad> findAllAdByPersonById(int id) {// переписать
+    public List<Ad> findAllAdByPersonById(int id) {
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
 
-        Person person = em.find(Person.class, id);
+        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.person.id = :id", Ad.class);
 
-        Set<Ad> allAds = person.getAds();
+        query.setParameter("id", id);
 
         transaction.commit();
 
+        List<Ad> resultList = query.getResultList();
+
         em.close();
 
-        return allAds;
+        return resultList;
 
     }
 
@@ -177,7 +175,7 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.id = :price", Ad.class);
+        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.price = :price", Ad.class);
 
 
         query.setParameter("price", bigDecimal);
@@ -192,7 +190,7 @@ public class MySQLAdDAO implements AdDAO {
     }
 
     @Override
-    public Ad findAdInRubricById(int id) {
+    public List<Ad> findAdInRubricById(int id) {
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -206,32 +204,26 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.commit();
 
-        Ad resultList = query.getSingleResult();
+        List<Ad> resultList = query.getResultList();
 
         em.close();
 
         return resultList;
     }
 
-    public void deleteAllAdByPersonById(int id) {
+    public void deleteAllAdByPersonById(int id) {// не работает как дебажить?
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
         transaction.begin();
-        /*Criteria criteria = findAllAdByPersonById(id);
 
-        Criteria criteria = em.createCriteria(Person.class);*/
+        Query query = em.createQuery("DELETE  FROM Ad a WHERE a.person.id = :id");
 
-
-
-        Person person = em.find(Person.class, id);//change to one query
-
-        Set<Ad> allAds = person.getAds();
-
-        person.removeAlldAd(allAds);
+        query.setParameter("id", id);
 
         transaction.commit();
+
 
         em.close();
 

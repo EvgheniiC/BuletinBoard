@@ -4,8 +4,10 @@ import com.evghenii.domain.Ad;
 import com.evghenii.domain.Address;
 import com.evghenii.domain.Person;
 import com.evghenii.domain.Rubric;
+import com.evghenii.service.AdService;
 import com.evghenii.service.PersonService;
 import com.evghenii.service.RubricService;
+import com.evghenii.service.impl.AdServiceImpl;
 import com.evghenii.service.impl.PersonServiceImpl;
 import com.evghenii.service.impl.RubricServiceImp;
 
@@ -18,7 +20,7 @@ public class BulletinBoardTest {
 
     public static void main(String[] args) {
 
-        PersonService personService = new PersonServiceImpl();
+       /* PersonService personService = new PersonServiceImpl();
 
         RubricService rubricService = new RubricServiceImp();
 
@@ -26,8 +28,7 @@ public class BulletinBoardTest {
 
         Rubric rubricWithAd = new Rubric("Mobile");
 
-       /* LocalDate today = LocalDate.now();
-
+        LocalDate today = LocalDate.now();
 
         Ad ad = new Ad("Selling", today, "Auto", new BigDecimal(1000), rubricWithAd);
         Ad ad1 = new Ad("Bey", today, "Auto", new BigDecimal(2000), rubricWithAd);
@@ -38,6 +39,7 @@ public class BulletinBoardTest {
         rubricService.save(rubricWithoutAd);
 
         Rubric cars = rubricService.findRubricByName("Cars");
+
 
         ad.setRubric(cars);
         ad1.setRubric(cars);
@@ -66,7 +68,7 @@ public class BulletinBoardTest {
         personService.save(vasiliy);*/
 
 
-        personService.deleteById(3);
+      /*  System.out.println(personService.findPersonById(6).getName());*/
 
        /* for (Person p: personService.findAll()) {
             System.out.println(p.getName());
@@ -75,8 +77,18 @@ public class BulletinBoardTest {
 
      //   personService.findAll();
 
+       /*  AdService adService = new AdServiceImpl();
+
+        System.out.println(adService.findByPrice(BigDecimal.valueOf(1000)));*///?????
 
 
+
+
+
+        /*  for (Rubric rubric: rubricService.findAll()) {
+            System.out.println(rubric.getName());
+
+        }*/
 
     }
 }

@@ -47,7 +47,7 @@ public class PostgreAdDAO implements AdDAO {
     }
 
     @Override
-    public Set<Ad> findAllAdByPersonById(int id) {
+    public List<Ad> findAllAdByPersonById(int id) {
         return null;
     }
 
@@ -57,7 +57,7 @@ public class PostgreAdDAO implements AdDAO {
     }
 
     @Override
-    public Ad findAdInRubricById(int id) {
+    public List<Ad> findAdInRubricById(int id) {
         return null;
     }
 

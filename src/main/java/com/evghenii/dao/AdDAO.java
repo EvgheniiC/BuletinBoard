@@ -5,7 +5,6 @@ import com.evghenii.domain.Ad;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public interface AdDAO {
     void save(Ad ad);
@@ -22,11 +21,11 @@ public interface AdDAO {
 
     List<Ad> findByTitle(String title);
 
-    Set<Ad> findAllAdByPersonById(int id);
+    List<Ad> findAllAdByPersonById(int id);
 
     List<Ad> findByPrice(BigDecimal bigDecimal);
 
-    Ad findAdInRubricById(int id);
+    List<Ad> findAdInRubricById(int id);
 
     void deleteAllAdByPersonById(int id);
 

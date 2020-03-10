@@ -2,6 +2,7 @@ package com.evghenii.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -101,7 +102,7 @@ public class Person {
         ads.add(ad);
     }
 
-    public void removeAlldAd(Set<Ad> ad) {
+    public void removeAllAd(List<Ad> ad) {
         ads.removeAll(ad);
     }
 
