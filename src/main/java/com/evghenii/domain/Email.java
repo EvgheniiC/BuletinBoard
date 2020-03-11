@@ -1,6 +1,8 @@
 package com.evghenii.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Email {
@@ -10,6 +12,8 @@ public class Email {
     @Column(name = "email_id")
     private int id;
 
+    @NotEmpty
+    @NotNull(message = "Email cannot be null")
     private String email;
 
     @ManyToOne(optional = false)

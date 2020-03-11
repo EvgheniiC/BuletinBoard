@@ -27,18 +27,15 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void update(Person person) {
         personDAO.update(person);
-
     }
 
     @Override
     public void deleteById(int id) {
         personDAO.deleteById(id);
-
     }
 
     @Override
     public List<Person> findAll() {
-
         return personDAO.findAll();
     }
 

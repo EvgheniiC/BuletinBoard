@@ -1,4 +1,6 @@
 1) Перенести em.close +
 2) Criteria query
-3) Hibernate validator в Sevice
+3) Hibernate validator  в Sevice
 4) Logi
+
+1 как дебажить jpql запросы

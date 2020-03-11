@@ -8,7 +8,6 @@ import com.evghenii.service.AdService;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class AdServiceImpl implements AdService {
 
@@ -58,7 +57,6 @@ public class AdServiceImpl implements AdService {
     public List<Ad> findAll() {
         return adDAO.findAll();
     }
-
 
     @Override
     public List<Ad> findAllAdByPersonById(int id) {

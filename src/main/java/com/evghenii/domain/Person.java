@@ -1,6 +1,8 @@
 package com.evghenii.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -13,8 +15,12 @@ public class Person {
     @Column(name = "person_id")
     private int id;
 
+    @NotEmpty
+    @NotNull(message = "Name cannot be null")
     private String name;
 
+    @NotEmpty
+    @NotNull(message = "Password cannot be null")
     private String password;
 
     @OneToMany(mappedBy = "person", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

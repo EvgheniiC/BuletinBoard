@@ -1,6 +1,7 @@
 package com.evghenii.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ public class Rubric {
     @Column(name = "rubric_id")
     private int id;
 
+    @NotNull(message = "Rubric name cannot be null")
     private String name;
 
     @OneToMany(mappedBy = "rubric", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})

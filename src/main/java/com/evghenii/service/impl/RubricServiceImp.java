@@ -20,19 +20,16 @@ public class RubricServiceImp implements RubricService {
 
     @Override
     public void save(Rubric rubric) {
-
         rubricDAO.save(rubric);
     }
 
     @Override
     public void update(Rubric rubric) {
-
         rubricDAO.update(rubric);
     }
 
     @Override
     public void deleteById(int id) {
-
         rubricDAO.deleteById(id);
     }
 

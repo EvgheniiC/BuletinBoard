@@ -222,8 +222,9 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("id", id);
 
-        transaction.commit();
+        em.remove(query);
 
+        transaction.commit();
 
         em.close();
 

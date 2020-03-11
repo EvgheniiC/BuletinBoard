@@ -1,6 +1,8 @@
 package com.evghenii.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Address {
@@ -10,8 +12,11 @@ public class Address {
     @Column(name = "address_id")
     private int id;
 
+    @NotEmpty
+    @NotNull(message = "City cannot be null")
     private String city;
 
+    @NotNull(message = "Street cannot be null")
     private String street;
 
     private int houseNumber;

@@ -1,6 +1,7 @@
 package com.evghenii.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,10 +14,12 @@ public class Ad {
     @Column(name = "ad_id")
     private int id;
 
+    @NotNull(message = "Title cannot be null")
     private String title;
 
     private LocalDate date;
 
+    @NotNull(message = "Text cannot be null")
     private String text;
 
     private BigDecimal price;
