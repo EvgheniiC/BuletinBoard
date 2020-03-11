@@ -1,24 +1,21 @@
 package com.evghenii;
 
 import com.evghenii.domain.Ad;
-import com.evghenii.domain.Address;
 import com.evghenii.domain.Person;
-import com.evghenii.domain.Rubric;
 import com.evghenii.service.AdService;
 import com.evghenii.service.PersonService;
-import com.evghenii.service.RubricService;
 import com.evghenii.service.impl.AdServiceImpl;
 import com.evghenii.service.impl.PersonServiceImpl;
-import com.evghenii.service.impl.RubricServiceImp;
-
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 
 public class BulletinBoardTest {
 
 
     public static void main(String[] args) {
+
+
+
+
 
        /* PersonService personService = new PersonServiceImpl();
 
@@ -68,27 +65,29 @@ public class BulletinBoardTest {
         personService.save(vasiliy);*/
 
 
-      /*  System.out.println(personService.findPersonById(6).getName());*/
+        /*  System.out.println(personService.findPersonById(6).getName());*/
 
        /* for (Person p: personService.findAll()) {
             System.out.println(p.getName());
 
         }*/
 
-     //   personService.findAll();
+        //   personService.findAll();
 
        /*  AdService adService = new AdServiceImpl();
 
         System.out.println(adService.findByPrice(BigDecimal.valueOf(1000)));*///?????
 
 
+        AdService adService = new AdServiceImpl();
 
 
 
-        /*  for (Rubric rubric: rubricService.findAll()) {
-            System.out.println(rubric.getName());
+          for (Ad ad: adService.findAdInRubricById(3)) {
+            System.out.println(ad.getTitle());
 
-        }*/
+        }
+
 
     }
 }

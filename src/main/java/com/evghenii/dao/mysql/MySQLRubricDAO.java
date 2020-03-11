@@ -4,6 +4,9 @@ import com.evghenii.dao.RubricDAO;
 import com.evghenii.domain.Rubric;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 public class MySQLRubricDAO implements RubricDAO {
@@ -51,7 +54,7 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.begin();
 
-        Rubric rubric = em.find(Rubric.class,id);
+        Rubric rubric = em.find(Rubric.class, id);
 
         em.remove(rubric);
 
@@ -67,9 +70,19 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.begin();
 
-        TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r WHERE r.name = :name", Rubric.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
 
-        query.setParameter("name", name);
+        CriteriaQuery<Rubric> criteriaQuery = cb.createQuery(Rubric.class);
+
+        Root<Rubric> rubricRoot = criteriaQuery.from(Rubric.class);
+
+        criteriaQuery.select(rubricRoot).where(cb.equal(rubricRoot.get("name"), name));
+
+        TypedQuery<Rubric> query = em.createQuery(criteriaQuery);
+
+         /*TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r WHERE r.name = :name", Rubric.class);
+
+        query.setParameter("name", name);*/
 
         transaction.commit();
 
@@ -88,7 +101,17 @@ public class MySQLRubricDAO implements RubricDAO {
 
         transaction.begin();
 
-        TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r", Rubric.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<Rubric> criteriaQuery = cb.createQuery(Rubric.class);
+
+        Root<Rubric> rubricRoot = criteriaQuery.from(Rubric.class);
+
+        criteriaQuery.select(rubricRoot);
+
+        TypedQuery<Rubric> query = em.createQuery(criteriaQuery);
+
+        /*TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r", Rubric.class);*/
 
         transaction.commit();
 

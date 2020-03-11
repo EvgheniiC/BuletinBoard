@@ -5,6 +5,7 @@ import com.evghenii.dao.mysql.MySQLAdDAO;
 import com.evghenii.domain.Ad;
 import com.evghenii.service.AdService;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -39,12 +40,12 @@ public class AdServiceImpl implements AdService {
 
 
     @Override
-    public void save(Ad ad) {
+    public void save(@Valid Ad ad) {
         adDAO.save(ad);
     }
 
     @Override
-    public void update(Ad ad) {
+    public void update(@Valid Ad ad) {
         adDAO.update(ad);
     }
 

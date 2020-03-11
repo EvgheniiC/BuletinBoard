@@ -2,8 +2,12 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
+import com.evghenii.domain.Person;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -69,7 +73,17 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("FROM Ad a ", Ad.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
+
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        criteriaQuery.select(adRoot);
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+       /* TypedQuery<Ad> query = em.createQuery("FROM Ad a ", Ad.class);*/
 
         transaction.commit();
 
@@ -88,10 +102,19 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.id = :id", Ad.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
 
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
 
-        query.setParameter("id", id);
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("id"),id));
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.id = :id", Ad.class);
+
+        query.setParameter("id", id);*/
 
         transaction.commit();
 
@@ -110,9 +133,19 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.date = :date", Ad.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
 
-        query.setParameter("date", date);
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
+
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("date"),date));
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+       /* TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.date = :date", Ad.class);
+
+        query.setParameter("date", date);*/
 
         transaction.commit();
 
@@ -131,10 +164,19 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.title = :title", Ad.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
 
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
 
-        query.setParameter("title", title);
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("title"),title));
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.title = :title", Ad.class);
+
+        query.setParameter("title", title);*/
 
         transaction.commit();
 
@@ -153,9 +195,19 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.person.id = :id", Ad.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
 
-        query.setParameter("id", id);
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
+
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("person").get("id"),id));
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.person.id = :id", Ad.class);
+
+        query.setParameter("id", id);*/
 
         transaction.commit();
 
@@ -175,10 +227,19 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.price = :price", Ad.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
 
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
 
-        query.setParameter("price", bigDecimal);
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("price"),bigDecimal));
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.price = :price", Ad.class);
+
+        query.setParameter("price", bigDecimal);*/
 
         transaction.commit();
 
@@ -197,10 +258,19 @@ public class MySQLAdDAO implements AdDAO {
 
         transaction.begin();
 
-        TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.rubric.id = :rubricId", Ad.class);
+        CriteriaBuilder cb = em.getCriteriaBuilder();
 
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
 
-        query.setParameter("rubricId", id);
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("rubric").get("id"),id));
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+       /* TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.rubric.id = :rubricId", Ad.class);
+
+        query.setParameter("rubricId", id);*/
 
         transaction.commit();
 

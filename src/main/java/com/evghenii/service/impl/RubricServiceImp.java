@@ -5,6 +5,7 @@ import com.evghenii.dao.mysql.MySQLRubricDAO;
 import com.evghenii.domain.Rubric;
 import com.evghenii.service.RubricService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 public class RubricServiceImp implements RubricService {
@@ -19,12 +20,12 @@ public class RubricServiceImp implements RubricService {
     }
 
     @Override
-    public void save(Rubric rubric) {
+    public void save(@Valid Rubric rubric) {
         rubricDAO.save(rubric);
     }
 
     @Override
-    public void update(Rubric rubric) {
+    public void update(@Valid Rubric rubric) {
         rubricDAO.update(rubric);
     }
 

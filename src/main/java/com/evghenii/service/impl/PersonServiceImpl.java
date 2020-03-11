@@ -5,6 +5,7 @@ import com.evghenii.dao.mysql.MySQLPersonDAO;
 import com.evghenii.domain.Person;
 import com.evghenii.service.PersonService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 public class PersonServiceImpl implements PersonService {
@@ -20,12 +21,12 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void save(Person person) {
+    public void save(@Valid Person person) {
         personDAO.save(person);
     }
 
     @Override
-    public void update(Person person) {
+    public void update(@Valid Person person) {
         personDAO.update(person);
     }
 
