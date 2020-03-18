@@ -2,7 +2,8 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
-import com.evghenii.domain.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,9 +16,12 @@ import java.util.List;
 public class MySQLAdDAO implements AdDAO {
     public static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("myjpa");
 
+    private static final Logger logger = LoggerFactory.getLogger(MySQLAdDAO.class);
 
     @Override
     public void save(Ad ad) {
+        logger.info("Ad save");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -33,6 +37,8 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public void update(Ad ad) {
+        logger.info("Ad update");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -50,6 +56,8 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public void deleteById(int id) {
+        logger.info("Ad deleteById");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -66,6 +74,8 @@ public class MySQLAdDAO implements AdDAO {
     }
 
     public List<Ad> findAll() {
+
+        logger.info("Ad findAll");
 
         EntityManager em = FACTORY.createEntityManager();
 
@@ -95,6 +105,8 @@ public class MySQLAdDAO implements AdDAO {
     }
 
     public Ad findAdById(int id) {
+
+        logger.info("Ad findAdById");
 
         EntityManager em = FACTORY.createEntityManager();
 
@@ -127,6 +139,9 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findAllByDate(LocalDate date) {
+
+        logger.info("Ad findAllByDate");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -158,6 +173,9 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findByTitle(String title) {
+
+        logger.info("Ad findByTitle");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -189,6 +207,9 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findAllAdByPersonById(int id) {
+
+        logger.info("Ad findAllAdByPersonById");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -221,6 +242,9 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findByPrice(BigDecimal bigDecimal) {
+
+        logger.info("Ad findByPrice");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -252,6 +276,9 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findAdInRubricById(int id) {
+
+        logger.info("Ad findAdInRubricById");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -281,7 +308,10 @@ public class MySQLAdDAO implements AdDAO {
         return resultList;
     }
 
-    public void deleteAllAdByPersonById(int id) {// не работает как дебажить?
+    public void deleteAllAdByPersonById(int id) {
+
+        logger.info("Ad deleteAllAdByPersonById");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -292,7 +322,7 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("id", id);
 
-        em.remove(query);
+        query.executeUpdate();
 
         transaction.commit();
 

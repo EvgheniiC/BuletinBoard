@@ -2,6 +2,8 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.PersonDAO;
 import com.evghenii.domain.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -12,8 +14,13 @@ import java.util.List;
 public class MySQLPersonDAO implements PersonDAO {
     public static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("myjpa");
 
+    private static final Logger logger = LoggerFactory.getLogger(MySQLPersonDAO.class);
+
     @Override
     public void save(Person person) {
+
+        logger.info("Person save");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -29,6 +36,9 @@ public class MySQLPersonDAO implements PersonDAO {
 
     @Override
     public void update(Person person) {
+
+        logger.info("Person update");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -46,6 +56,9 @@ public class MySQLPersonDAO implements PersonDAO {
 
     @Override
     public void deleteById(int id) {
+
+        logger.info("Person deleteById");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -62,6 +75,9 @@ public class MySQLPersonDAO implements PersonDAO {
     }
 
     public Person findPersonByName(String name) {
+
+        logger.info("Person findPersonByName");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -93,6 +109,8 @@ public class MySQLPersonDAO implements PersonDAO {
     }
 
     public Person findPersonById(int id) {
+
+        logger.info("Person findPersonById");
 
         EntityManager em = FACTORY.createEntityManager();
 
@@ -126,6 +144,8 @@ public class MySQLPersonDAO implements PersonDAO {
 
     @Override
     public List<Person> findAll() {
+
+        logger.info("Person findAll");
 
         EntityManager em = FACTORY.createEntityManager();
 

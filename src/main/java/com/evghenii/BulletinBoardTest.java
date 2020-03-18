@@ -81,12 +81,13 @@ public class BulletinBoardTest {
 
         AdService adService = new AdServiceImpl();
 
+        adService.findAdInRubricById(2);
 
 
-          for (Ad ad: adService.findAdInRubricById(3)) {
+        /*  for (Ad ad: adService.findAdInRubricById(3)) {
             System.out.println(ad.getTitle());
 
-        }
+        }*/
 
 
     }

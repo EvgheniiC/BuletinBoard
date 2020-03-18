@@ -2,6 +2,8 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.RubricDAO;
 import com.evghenii.domain.Rubric;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -12,8 +14,13 @@ import java.util.List;
 public class MySQLRubricDAO implements RubricDAO {
     public static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("myjpa");
 
+    private static final Logger logger = LoggerFactory.getLogger(MySQLRubricDAO.class);
+
     @Override
     public void save(Rubric rubric) {
+
+        logger.info("Rubric save");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -30,6 +37,9 @@ public class MySQLRubricDAO implements RubricDAO {
 
     @Override
     public void update(Rubric rubric) {
+
+        logger.info("Rubric update");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -48,6 +58,9 @@ public class MySQLRubricDAO implements RubricDAO {
 
     @Override
     public void deleteById(int id) {
+
+        logger.info("Rubric deleteById");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -64,6 +77,9 @@ public class MySQLRubricDAO implements RubricDAO {
     }
 
     public Rubric findRubricByName(String name) {
+
+        logger.info("Rubric findRubricByName");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
@@ -95,6 +111,9 @@ public class MySQLRubricDAO implements RubricDAO {
     }
 
     public List<Rubric> findAll() {
+
+        logger.info("Rubric findAll");
+
         EntityManager em = FACTORY.createEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
