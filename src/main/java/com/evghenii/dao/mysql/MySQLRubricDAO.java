@@ -2,8 +2,10 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.RubricDAO;
 import com.evghenii.domain.Rubric;
+import com.evghenii.util.EntityManagerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -11,17 +13,15 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+@Repository
 public class MySQLRubricDAO implements RubricDAO {
-    public static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("myjpa");
 
     private static final Logger logger = LoggerFactory.getLogger(MySQLRubricDAO.class);
 
     @Override
     public void save(Rubric rubric) {
 
-        logger.info("Rubric save");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -33,14 +33,14 @@ public class MySQLRubricDAO implements RubricDAO {
 
         em.close();
 
+        logger.info("Rubric save");
+
     }
 
     @Override
     public void update(Rubric rubric) {
 
-        logger.info("Rubric update");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -54,14 +54,14 @@ public class MySQLRubricDAO implements RubricDAO {
 
         em.close();
 
+        logger.info("Rubric update");
+
     }
 
     @Override
     public void deleteById(int id) {
 
-        logger.info("Rubric deleteById");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -74,13 +74,13 @@ public class MySQLRubricDAO implements RubricDAO {
         transaction.commit();
 
         em.close();
+
+        logger.info("Rubric deleteById");
     }
 
     public Rubric findRubricByName(String name) {
 
-        logger.info("Rubric findRubricByName");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -106,15 +106,15 @@ public class MySQLRubricDAO implements RubricDAO {
 
         em.close();
 
+        logger.info("Rubric findRubricByName");
+
         return rubric;
 
     }
 
     public List<Rubric> findAll() {
 
-        logger.info("Rubric findAll");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -137,6 +137,8 @@ public class MySQLRubricDAO implements RubricDAO {
         List<Rubric> resultList = query.getResultList();
 
         em.close();
+
+        logger.info("Rubric findAll");
 
         return resultList;
 

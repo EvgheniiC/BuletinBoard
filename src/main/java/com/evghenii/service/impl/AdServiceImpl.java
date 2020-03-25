@@ -4,22 +4,23 @@ import com.evghenii.dao.AdDAO;
 import com.evghenii.dao.mysql.MySQLAdDAO;
 import com.evghenii.domain.Ad;
 import com.evghenii.service.AdService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class AdServiceImpl implements AdService {
 
-    private AdDAO adDAO;
+    private final AdDAO adDAO;
 
-    public AdServiceImpl(AdDAO adDAO) {
+    @Autowired
+    public AdServiceImpl(@Qualifier("mySQLAdDAO") AdDAO adDAO) {
         this.adDAO = adDAO;
-    }
-
-    public AdServiceImpl() {
-        this.adDAO = new MySQLAdDAO();
     }
 
     @Override

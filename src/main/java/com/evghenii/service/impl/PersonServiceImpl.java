@@ -4,10 +4,12 @@ import com.evghenii.dao.PersonDAO;
 import com.evghenii.dao.mysql.MySQLPersonDAO;
 import com.evghenii.domain.Person;
 import com.evghenii.service.PersonService;
+import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.util.List;
 
+@Service
 public class PersonServiceImpl implements PersonService {
 
     private PersonDAO personDAO;

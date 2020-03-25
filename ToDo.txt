@@ -1,6 +1,4 @@
-1) Перенести em.close +
-2) Criteria query + кроме deleteAllAdByPersonById
-3) Hibernate validator  в Sevice +
-4) Logi
+1) Создать GenericCRUDDAO
+2) добавить в Service инжекции DAO
+3) Добавить Vadilation
 
-1 как дебажить jpql запросы

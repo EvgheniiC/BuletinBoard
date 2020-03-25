@@ -1,11 +1,7 @@
 package com.evghenii;
 
-import com.evghenii.domain.Ad;
-import com.evghenii.domain.Person;
-import com.evghenii.service.AdService;
-import com.evghenii.service.PersonService;
-import com.evghenii.service.impl.AdServiceImpl;
-import com.evghenii.service.impl.PersonServiceImpl;
+import com.evghenii.configuration.ConfigApp;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 public class BulletinBoardTest {
@@ -13,8 +9,22 @@ public class BulletinBoardTest {
 
     public static void main(String[] args) {
 
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ConfigApp.class);
 
+        /*AdService adService = context.getBean(AdServiceImpl.class);
 
+        System.out.println(adService.findAdInRubricById(0));*/
+
+       /* PersonService personService = context.getBean(PersonService.class);
+
+        System.out.println(personService.findPersonById(11).getName());*/
+
+       /* RubricService rubricService = context.getBean(RubricService.class);
+
+        Rubric rubric = new Rubric();
+        rubric.setName("Tier");
+
+        rubricService.save(rubric);*/
 
 
        /* PersonService personService = new PersonServiceImpl();
@@ -79,9 +89,10 @@ public class BulletinBoardTest {
         System.out.println(adService.findByPrice(BigDecimal.valueOf(1000)));*///?????
 
 
-        AdService adService = new AdServiceImpl();
 
-        adService.findAdInRubricById(2);
+
+
+
 
 
         /*  for (Ad ad: adService.findAdInRubricById(3)) {

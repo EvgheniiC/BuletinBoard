@@ -2,8 +2,10 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.PersonDAO;
 import com.evghenii.domain.Person;
+import com.evghenii.util.EntityManagerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -11,17 +13,15 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
+@Repository
 public class MySQLPersonDAO implements PersonDAO {
-    public static final EntityManagerFactory FACTORY = Persistence.createEntityManagerFactory("myjpa");
 
     private static final Logger logger = LoggerFactory.getLogger(MySQLPersonDAO.class);
 
     @Override
     public void save(Person person) {
 
-        logger.info("Person save");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -32,14 +32,14 @@ public class MySQLPersonDAO implements PersonDAO {
         transaction.commit();
 
         em.close();
+
+        logger.info("Person save");
     }
 
     @Override
     public void update(Person person) {
 
-        logger.info("Person update");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -52,14 +52,14 @@ public class MySQLPersonDAO implements PersonDAO {
         transaction.commit();
 
         em.close();
+
+        logger.info("Person update");
     }
 
     @Override
     public void deleteById(int id) {
 
-        logger.info("Person deleteById");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -72,13 +72,13 @@ public class MySQLPersonDAO implements PersonDAO {
         transaction.commit();
 
         em.close();
+
+        logger.info("Person deleteById");
     }
 
     public Person findPersonByName(String name) {
 
-        logger.info("Person findPersonByName");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -104,15 +104,15 @@ public class MySQLPersonDAO implements PersonDAO {
 
         em.close();
 
+        logger.info("Person findPersonByName");
+
         return singleResult;
 
     }
 
     public Person findPersonById(int id) {
 
-        logger.info("Person findPersonById");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -138,6 +138,8 @@ public class MySQLPersonDAO implements PersonDAO {
 
         em.close();
 
+        logger.info("Person findPersonById");
+
         return singleResult;
     }
 
@@ -145,9 +147,7 @@ public class MySQLPersonDAO implements PersonDAO {
     @Override
     public List<Person> findAll() {
 
-        logger.info("Person findAll");
-
-        EntityManager em = FACTORY.createEntityManager();
+        EntityManager em = EntityManagerUtil.getEntityManager();
 
         EntityTransaction transaction = em.getTransaction();
 
@@ -170,6 +170,8 @@ public class MySQLPersonDAO implements PersonDAO {
         List<Person> resultList = query.getResultList();
 
         em.close();
+
+        logger.info("Person findAll");
 
         return resultList;
     }
