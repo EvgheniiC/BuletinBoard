@@ -6,14 +6,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-public interface AdDAO {
-    void save(Ad ad);
-
-    void update(Ad ad);
-
-    void deleteById(int id);
-
-    List<Ad> findAll();
+public interface AdDAO extends GenericCRUDDAO<Ad> {
 
     Ad findAdById(int id);
 

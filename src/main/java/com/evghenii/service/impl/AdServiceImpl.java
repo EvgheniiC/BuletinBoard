@@ -23,6 +23,10 @@ public class AdServiceImpl implements AdService {
         this.adDAO = adDAO;
     }
 
+    public AdServiceImpl() {
+        this.adDAO = new MySQLAdDAO();
+    }
+
     @Override
     public List<Ad> findAllByDate(LocalDate date) {
         return adDAO.findAllByDate(date);
@@ -38,7 +42,6 @@ public class AdServiceImpl implements AdService {
     public List<Ad> findByPrice(BigDecimal bigDecimal) {
         return adDAO.findByPrice(bigDecimal);
     }
-
 
     @Override
     public void save(@Valid Ad ad) {

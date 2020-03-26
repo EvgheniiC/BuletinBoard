@@ -1,4 +1,4 @@
-1) Создать GenericCRUDDAO
-2) добавить в Service инжекции DAO
-3) Добавить Vadilation
+1) Создать GenericCRUDDAO +
+2) добавить в Service инжекции DAO +
+
 

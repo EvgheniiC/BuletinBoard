@@ -4,6 +4,8 @@ import com.evghenii.dao.PersonDAO;
 import com.evghenii.dao.mysql.MySQLPersonDAO;
 import com.evghenii.domain.Person;
 import com.evghenii.service.PersonService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -12,14 +14,15 @@ import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService {
 
-    private PersonDAO personDAO;
+    private final PersonDAO personDAO;
 
-    public PersonServiceImpl() {
+    @Autowired
+    public PersonServiceImpl(@Qualifier("mySQLPersonDAO") PersonDAO personDAO) {
         this.personDAO = new MySQLPersonDAO();
     }
 
-    public PersonServiceImpl(PersonDAO personDAO) {
-        this.personDAO = personDAO;
+    public PersonServiceImpl() {
+        this.personDAO = new MySQLPersonDAO();
     }
 
     @Override

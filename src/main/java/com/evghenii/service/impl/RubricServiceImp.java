@@ -4,6 +4,8 @@ import com.evghenii.dao.RubricDAO;
 import com.evghenii.dao.mysql.MySQLRubricDAO;
 import com.evghenii.domain.Rubric;
 import com.evghenii.service.RubricService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -12,13 +14,14 @@ import java.util.List;
 @Service
 public class RubricServiceImp implements RubricService {
 
-    private RubricDAO rubricDAO;
+    private final RubricDAO rubricDAO;
 
     public RubricServiceImp() {
         this.rubricDAO = new MySQLRubricDAO();
     }
 
-    public RubricServiceImp(RubricDAO rubricDAO) {
+    @Autowired
+    public RubricServiceImp(@Qualifier("mySQLRubricDAO") RubricDAO rubricDAO) {
         this.rubricDAO = rubricDAO;
     }
 
