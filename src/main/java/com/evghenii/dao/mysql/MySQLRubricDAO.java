@@ -6,6 +6,7 @@ import com.evghenii.util.EntityManagerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -14,24 +15,18 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
+@Transactional
 public class MySQLRubricDAO implements RubricDAO {
 
     private static final Logger logger = LoggerFactory.getLogger(MySQLRubricDAO.class);
 
+    @PersistenceContext
+    private EntityManager em;
+
     @Override
     public void save(Rubric rubric) {
 
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
         em.persist(rubric);
-
-        transaction.commit();
-
-        em.close();
 
         logger.info("Rubric save");
 
@@ -40,19 +35,9 @@ public class MySQLRubricDAO implements RubricDAO {
     @Override
     public void update(Rubric rubric) {
 
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
         Rubric mergeRubric = em.merge(rubric);
 
         em.persist(mergeRubric);
-
-        transaction.commit();
-
-        em.close();
 
         logger.info("Rubric update");
 
@@ -61,30 +46,14 @@ public class MySQLRubricDAO implements RubricDAO {
     @Override
     public void deleteById(int id) {
 
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
         Rubric rubric = em.find(Rubric.class, id);
 
         em.remove(rubric);
-
-        transaction.commit();
-
-        em.close();
 
         logger.info("Rubric deleteById");
     }
 
     public Rubric findRubricByName(String name) {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -100,11 +69,7 @@ public class MySQLRubricDAO implements RubricDAO {
 
         query.setParameter("name", name);*/
 
-        transaction.commit();
-
         Rubric rubric = query.getSingleResult();
-
-        em.close();
 
         logger.info("Rubric findRubricByName");
 
@@ -113,12 +78,6 @@ public class MySQLRubricDAO implements RubricDAO {
     }
 
     public List<Rubric> findAll() {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -132,16 +91,11 @@ public class MySQLRubricDAO implements RubricDAO {
 
         /*TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r", Rubric.class);*/
 
-        transaction.commit();
-
         List<Rubric> resultList = query.getResultList();
-
-        em.close();
 
         logger.info("Rubric findAll");
 
         return resultList;
-
     }
 
 }

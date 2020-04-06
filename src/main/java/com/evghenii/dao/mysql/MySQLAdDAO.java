@@ -2,15 +2,12 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
-import com.evghenii.util.EntityManagerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -19,24 +16,21 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
+@Transactional
 public class MySQLAdDAO implements AdDAO {
 
     private static final Logger logger = LoggerFactory.getLogger(MySQLAdDAO.class);
 
+    @PersistenceContext
+    private EntityManager em;
+
+    @PersistenceUnit
+    private EntityManagerFactory factory;
+
     @Override
     public void save(Ad ad) {
 
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
         em.persist(ad);
-
-        transaction.commit();
-
-        em.close();
 
         logger.info("Ad save");
     }
@@ -44,19 +38,9 @@ public class MySQLAdDAO implements AdDAO {
     @Override
     public void update(Ad ad) {
 
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
         Ad mergedAd = em.merge(ad);
 
         em.persist(mergedAd);
-
-        transaction.commit();
-
-        em.close();
 
         logger.info("Ad update");
     }
@@ -64,30 +48,14 @@ public class MySQLAdDAO implements AdDAO {
     @Override
     public void deleteById(int id) {
 
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
         Ad ad = em.find(Ad.class, id);
 
         em.remove(ad);
-
-        transaction.commit();
-
-        em.close();
 
         logger.info("Ad deleteById");
     }
 
     public List<Ad> findAll() {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -101,11 +69,7 @@ public class MySQLAdDAO implements AdDAO {
 
         /* TypedQuery<Ad> query = em.createQuery("FROM Ad a ", Ad.class);*/
 
-        transaction.commit();
-
         List<Ad> list = query.getResultList();
-
-        em.close();
 
         logger.info("Ad findAll");
 
@@ -113,12 +77,6 @@ public class MySQLAdDAO implements AdDAO {
     }
 
     public Ad findAdById(int id) {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -134,11 +92,7 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("id", id);*/
 
-        transaction.commit();
-
         Ad singleResult = query.getSingleResult();
-
-        em.close();
 
         logger.info("Ad findAdById");
 
@@ -147,12 +101,6 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findAllByDate(LocalDate date) {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -168,11 +116,7 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("date", date);*/
 
-        transaction.commit();
-
         List<Ad> resultList = query.getResultList();
-
-        em.close();
 
         logger.info("Ad findAllByDate");
 
@@ -181,12 +125,6 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findByTitle(String title) {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -202,11 +140,7 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("title", title);*/
 
-        transaction.commit();
-
         List<Ad> resultList = query.getResultList();
-
-        em.close();
 
         logger.info("Ad findByTitle");
 
@@ -215,12 +149,6 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findAllAdByPersonById(int id) {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -236,11 +164,7 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("id", id);*/
 
-        transaction.commit();
-
         List<Ad> resultList = query.getResultList();
-
-        em.close();
 
         logger.info("Ad findAllAdByPersonById");
 
@@ -250,12 +174,6 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findByPrice(BigDecimal bigDecimal) {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -271,11 +189,7 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("price", bigDecimal);*/
 
-        transaction.commit();
-
         List<Ad> resultList = query.getResultList();
-
-        em.close();
 
         logger.info("Ad findByPrice");
 
@@ -284,12 +198,6 @@ public class MySQLAdDAO implements AdDAO {
 
     @Override
     public List<Ad> findAdInRubricById(int id) {
-
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
 
         CriteriaBuilder cb = em.getCriteriaBuilder();
 
@@ -305,11 +213,7 @@ public class MySQLAdDAO implements AdDAO {
 
         query.setParameter("rubricId", id);*/
 
-        transaction.commit();
-
         List<Ad> resultList = query.getResultList();
-
-        em.close();
 
         logger.info("Ad findAdInRubricById");
 
@@ -318,23 +222,12 @@ public class MySQLAdDAO implements AdDAO {
 
     public void deleteAllAdByPersonById(int id) {
 
-        EntityManager em = EntityManagerUtil.getEntityManager();
-
-        EntityTransaction transaction = em.getTransaction();
-
-        transaction.begin();
-
         Query query = em.createQuery("DELETE  FROM Ad a WHERE a.person.id = :id");
 
         query.setParameter("id", id);
 
         query.executeUpdate();
 
-        transaction.commit();
-
-        em.close();
-
         logger.info("Ad deleteAllAdByPersonById");
-
     }
 }

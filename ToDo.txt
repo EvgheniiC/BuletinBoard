@@ -1,4 +1,3 @@
-1) Создать GenericCRUDDAO +
-2) добавить в Service инжекции DAO +
-
+1) Поставить анотации Transaction(spring) над DAO
+2) Анотация persistenscontext в DAO
 

@@ -1,4 +1,4 @@
 package com.evghenii.controller;
 
-public class AdController {
+public class AdController {//
 }
