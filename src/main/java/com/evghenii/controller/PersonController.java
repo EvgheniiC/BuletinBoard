@@ -1,63 +1,50 @@
 package com.evghenii.controller;
 
-import com.evghenii.dao.postgre.PostgrePersonDAO;
-import com.evghenii.domain.Ad;
 import com.evghenii.domain.Person;
-import com.evghenii.service.CRUDService;
-import com.evghenii.service.impl.PersonServiceImpl;
+import com.evghenii.service.PersonService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-public class PersonController {//
-    private CRUDService<Person> crudService;
-    private PersonServiceImpl service;
+@Controller
+@RequestMapping("/person")
+public class PersonController {
 
+    private final PersonService personService;
 
-    public PersonController() {
-        this.crudService = new PersonServiceImpl(new PostgrePersonDAO());
+    public PersonController(PersonService personService) {
+        //this.crudService = new PersonServiceImpl(new PostgrePersonDAO());
+        this.personService = personService;
     }
 
-    public void save(Person person) {//convert JSON to Person object
-        crudService.save(person);
+    @PostMapping(value = "/persons")
+    public void save(@RequestBody Person person) {
+        personService.save(person);
     }
 
-
-    public Set<Ad> filterFindAllAdByPersonByWord(String name, String word) {
-
-        Set<Ad> resuls = new HashSet<>();
-
-
-        Person person = service.findPersonByName(name);
-
-        Set<Ad> allAds = person.getAds();
-
-        for (Ad ad : allAds) {//Streem?
-            if (ad.getText().equals(word)) {
-                resuls.add(ad);
-            }
-        }
-
-        return resuls;
+    @PutMapping(value = "/persons")
+    public void update(@RequestBody Person person) {
+        personService.update(person);
     }
 
+    @DeleteMapping(value = "/persons/{personId}")
+    public void deleteById(@PathVariable("personId") int id) {
+        personService.deleteById(id);
+    }
 
-    public Set<Ad> filterFindAllAdByPersonByDate(String name, LocalDate localDate) {
+    @GetMapping(value = "/persons")
+    public List<Person> findAllPersons() {
+        return personService.findAll();
+    }
 
-        Set<Ad> resuls = new HashSet<>();
+    @GetMapping(value = "/persons/{name}")
+    public Person findPersonByName(@PathVariable("name") String name) {
+        return personService.findPersonByName(name);
+    }
 
-
-        Person person = service.findPersonByName(name);
-
-        Set<Ad> allAds = person.getAds();
-
-        for (Ad ad : allAds) {//Streem?
-            if (ad.getDate().equals(localDate)) {
-                resuls.add(ad);
-            }
-        }
-
-        return resuls;
+    @GetMapping(value = "/persons/{personId}")
+    public Person findPersonById(@PathVariable("personId") int id) {
+        return personService.findPersonById(id);
     }
 }

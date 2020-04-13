@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4f8163fe-def8-4237-9eb3-3fb31a2c1b63" name="Default Changelist" comment="GenericCRUDDAO and @Autowired added">
+    <list default="true" id="4f8163fe-def8-4237-9eb3-3fb31a2c1b63" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/configuration/ConfigApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/configuration/ConfigApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/AddressController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/EmailController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/PhoneController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/RubricController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/RubricController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLAdDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLAdDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLPersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLPersonDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLRubricDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLRubricDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/AdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/AdService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/PersonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/PersonServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/RubricServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/RubricServiceImp.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,8 +30,8 @@
         <option value="AnnotationType" />
         <option value="FxmlFile" />
         <option value="JUnit4 Test Class" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -60,7 +65,7 @@
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584969544171" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../LearnJPA" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -94,7 +99,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.27">
     <configuration name="BulletinBoardTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.evghenii.BulletinBoardTest" />
       <module name="BulletinBoard" />
@@ -108,6 +113,81 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Tomcat 9.0.27" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.27" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <file path="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </file>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_BulletinBoard" />
+        <option name="HTTP_PORT" value="9999" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="62142" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="war:war" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.BulletinBoardTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.27" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.BulletinBoardTest" />
@@ -146,7 +226,11 @@
       <workItem from="1585764486000" duration="352000" />
       <workItem from="1586078002687" duration="2719000" />
       <workItem from="1586083044602" duration="679000" />
-      <workItem from="1586170296844" duration="1212000" />
+      <workItem from="1586170296844" duration="2694000" />
+      <workItem from="1586462043192" duration="4932000" />
+      <workItem from="1586505594447" duration="1489000" />
+      <workItem from="1586508640749" duration="931000" />
+      <workItem from="1586769121706" duration="7787000" />
     </task>
     <task id="LOCAL-00001" summary="Rubric,Test added">
       <created>1582628916116</created>
@@ -246,7 +330,21 @@
       <option name="project" value="LOCAL" />
       <updated>1585221064953</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Transaction und SpringMVC added">
+      <created>1586172366205</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1586172366205</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Generic und Em added">
+      <created>1586172459022</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1586172459022</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +378,9 @@
     <MESSAGE value="TestClassen added" />
     <MESSAGE value="TestClassen added +" />
     <MESSAGE value="GenericCRUDDAO and @Autowired added" />
-    <option name="LAST_COMMIT_MESSAGE" value="GenericCRUDDAO and @Autowired added" />
+    <MESSAGE value="Transaction und SpringMVC added" />
+    <MESSAGE value="Generic und Em added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Generic und Em added" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -294,82 +394,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>javafx.11</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>BulletinBoard</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

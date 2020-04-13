@@ -32,7 +32,6 @@ public class Ad {
     @JoinColumn(name = "rubric_fk_id")
     private Rubric rubric;
 
-
     public Ad() {
     }
 
