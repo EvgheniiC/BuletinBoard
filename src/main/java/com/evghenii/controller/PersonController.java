@@ -8,13 +8,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/person")
+@RequestMapping("person")
 public class PersonController {
 
     private final PersonService personService;
 
     public PersonController(PersonService personService) {
-        //this.crudService = new PersonServiceImpl(new PostgrePersonDAO());
         this.personService = personService;
     }
 

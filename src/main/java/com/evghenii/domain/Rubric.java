@@ -9,7 +9,7 @@ import java.util.Set;
 public class Rubric {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "rubric_id")
     private int id;
 

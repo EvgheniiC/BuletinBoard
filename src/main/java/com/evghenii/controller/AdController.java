@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-@RequestMapping("/ad")
+@RequestMapping("ad")
 public class AdController {
 
     private final AdService adService;
@@ -80,7 +80,7 @@ public class AdController {
         return adService.findByTitle(word);
     }
 
-    @GetMapping(value = "/ads/{date}")
+    @GetMapping(value = "/ads/person/{date}")
     @ResponseBody
     public List<Ad> findAllAdByPersonByDate(@PathVariable("date") LocalDate localDate) {
         return adService.findAllByDate(localDate);

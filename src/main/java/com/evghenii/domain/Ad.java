@@ -1,5 +1,7 @@
 package com.evghenii.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -10,13 +12,14 @@ import java.time.LocalDate;
 public class Ad {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ad_id")
     private int id;
 
     @NotNull(message = "Title cannot be null")
     private String title;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     @NotNull(message = "Text cannot be null")

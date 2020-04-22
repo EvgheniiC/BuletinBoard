@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Email {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "email_id")
     private int id;
 

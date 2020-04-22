@@ -18,15 +18,15 @@ public class PersonServiceImpl implements PersonService {
 
     @Autowired
     public PersonServiceImpl(@Qualifier("mySQLPersonDAO") PersonDAO personDAO) {
-        this.personDAO = new MySQLPersonDAO();
-    }
-
-    public PersonServiceImpl() {
-        this.personDAO = new MySQLPersonDAO();
+        this.personDAO = personDAO;
     }
 
     @Override
     public void save(@Valid Person person) {
+        person.getEmails().forEach(e -> e.setPerson(person));
+        person.getAds().forEach(e -> e.setPerson(person));
+        person.getPhones().forEach(e -> e.setPerson(person));
+        person.getAddress().setPerson(person);
         personDAO.save(person);
     }
 

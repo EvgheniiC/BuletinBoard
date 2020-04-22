@@ -2,7 +2,6 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.RubricDAO;
 import com.evghenii.domain.Rubric;
-import com.evghenii.util.EntityManagerUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;

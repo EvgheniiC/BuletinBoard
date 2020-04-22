@@ -13,7 +13,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="BulletinBoard" options="-processor org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor" />
+      <module name="BulletinBoard" options="" />
     </option>
   </component>
 </project>

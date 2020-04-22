@@ -16,10 +16,6 @@ public class RubricServiceImp implements RubricService {
 
     private final RubricDAO rubricDAO;
 
-    public RubricServiceImp() {
-        this.rubricDAO = new MySQLRubricDAO();
-    }
-
     @Autowired
     public RubricServiceImp(@Qualifier("mySQLRubricDAO") RubricDAO rubricDAO) {
         this.rubricDAO = rubricDAO;
@@ -27,6 +23,7 @@ public class RubricServiceImp implements RubricService {
 
     @Override
     public void save(@Valid Rubric rubric) {
+       // rubric.getAds().forEach(e -> e.setRubric(rubric));
         rubricDAO.save(rubric);
     }
 

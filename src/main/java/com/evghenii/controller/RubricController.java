@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/rubric")
+@RequestMapping("rubric")
 public class RubricController {
 
     private final RubricService rubricService;

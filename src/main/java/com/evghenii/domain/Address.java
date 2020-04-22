@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "address_id")
     private int id;
 
@@ -19,6 +19,7 @@ public class Address {
     @NotNull(message = "Street cannot be null")
     private String street;
 
+    @Column(name = "house_number")
     private int houseNumber;
 
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)

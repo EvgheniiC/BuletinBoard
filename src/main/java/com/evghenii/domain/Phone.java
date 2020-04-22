@@ -6,10 +6,11 @@ import javax.persistence.*;
 public class Phone {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "phone_id")
     private int id;
 
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     @ManyToOne(optional = false)
