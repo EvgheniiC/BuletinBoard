@@ -25,13 +25,10 @@ public class Address {
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private Person person;
 
-    public Address() {
-    }
+    @Version
+    private int version;
 
-    public Address(String city, String street, int houseNumber) {
-        this.city = city;
-        this.street = street;
-        this.houseNumber = houseNumber;
+    public Address() {
     }
 
     public int getId() {
@@ -72,5 +69,13 @@ public class Address {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

@@ -2,14 +2,14 @@ package com.evghenii.controller;
 
 import com.evghenii.domain.Ad;
 import com.evghenii.service.AdService;
-import org.springframework.stereotype.Controller;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("ad")
 public class AdController {
 
@@ -19,17 +19,17 @@ public class AdController {
         this.adService = adService;
     }
 
-    @GetMapping(value = "/ads/{date}")
-    public List<Ad> findAllByDate(@PathVariable("date") LocalDate date) {
+    @GetMapping(value = "/ads/date/{date}")
+    public List<Ad> findAllByDate(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         return adService.findAllByDate(date);
     }
 
-    @GetMapping(value = "/ads/{title}")
+    @GetMapping(value = "/ads/title/{title}")
     public List<Ad> findByTitle(@PathVariable("title") String title) {
         return adService.findByTitle(title);
     }
 
-    @GetMapping(value = "/ads/{price}")
+    @GetMapping(value = "/ads/price/{price}")
     public List<Ad> findByPrice(@PathVariable("price") BigDecimal bigDecimal) {
         return adService.findByPrice(bigDecimal);
     }
@@ -54,12 +54,12 @@ public class AdController {
         return adService.findAll();
     }
 
-    @GetMapping(value = "/persons/{personId}/ads")
+    @GetMapping(value = "/ads/person/{personId}")
     public List<Ad> findAllAdByPersonById(@PathVariable("personId") int id) {
         return adService.findAllAdByPersonById(id);
     }
 
-    @GetMapping(value = "/rubrics/{rubricId}/ads")
+    @GetMapping(value = "/ads/rubrics/{rubricId}")
     public List<Ad> findAdInRubricById(@PathVariable("rubricId") int id) {
         return adService.findAdInRubricById(id);
     }
@@ -74,15 +74,13 @@ public class AdController {
         return adService.findAdById(id);
     }
 
-    @GetMapping(value = "/ads/{word}")
-    @ResponseBody
+    @GetMapping(value = "/ads/word/{word}")
     public List<Ad> findAllAdByPersonByWord(@PathVariable("word") String word) {
         return adService.findByTitle(word);
     }
 
-    @GetMapping(value = "/ads/person/{date}")
-    @ResponseBody
-    public List<Ad> findAllAdByPersonByDate(@PathVariable("date") LocalDate localDate) {
+    @GetMapping(value = "/ads/person/date/{date}")
+    public List<Ad> findAllAdByPersonByDate(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate localDate) {
         return adService.findAllByDate(localDate);
     }
 }

@@ -2,12 +2,11 @@ package com.evghenii.controller;
 
 import com.evghenii.domain.Rubric;
 import com.evghenii.service.RubricService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("rubric")
 public class RubricController {
 

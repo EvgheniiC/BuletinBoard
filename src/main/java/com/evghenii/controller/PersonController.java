@@ -2,12 +2,11 @@ package com.evghenii.controller;
 
 import com.evghenii.domain.Person;
 import com.evghenii.service.PersonService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("person")
 public class PersonController {
 
@@ -22,7 +21,7 @@ public class PersonController {
         personService.save(person);
     }
 
-    @PutMapping(value = "/persons")
+    @PutMapping(value = "/persons/update")
     public void update(@RequestBody Person person) {
         personService.update(person);
     }
@@ -37,7 +36,7 @@ public class PersonController {
         return personService.findAll();
     }
 
-    @GetMapping(value = "/persons/{name}")
+    @GetMapping(value = "/person/{name}")
     public Person findPersonByName(@PathVariable("name") String name) {
         return personService.findPersonByName(name);
     }

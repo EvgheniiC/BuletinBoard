@@ -24,9 +24,6 @@ public class MySQLAdDAO implements AdDAO {
     @PersistenceContext
     private EntityManager em;
 
-    @PersistenceUnit
-    private EntityManagerFactory factory;
-
     @Override
     public void save(Ad ad) {
 
@@ -48,9 +45,11 @@ public class MySQLAdDAO implements AdDAO {
     @Override
     public void deleteById(int id) {
 
-        Ad ad = em.find(Ad.class, id);
+        Query query = em.createQuery("DELETE FROM Ad ad WHERE ad.id = :id");
 
-        em.remove(ad);
+        query.setParameter("id", id);
+
+        query.executeUpdate();
 
         logger.info("Ad deleteById");
     }

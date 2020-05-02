@@ -1,5 +1,7 @@
 package com.evghenii.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -7,7 +9,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+
 @Entity
+@JsonIdentityInfo(generator = PropertyGenerator.class, property = "id")
 public class Person {
 
     @Id
@@ -23,18 +28,21 @@ public class Person {
     @NotNull(message = "Password cannot be null")
     private String password;
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
     private Set<Phone> phones = new HashSet<>();
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
     private Set<Ad> ads = new HashSet<>();
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
     private Set<Email> emails = new HashSet<>();
 
-    @OneToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
     @JoinColumn(name = "address_fk_id")
     private Address address;
+
+    @Version
+    private int version;
 
     public Person() {
     }
@@ -128,5 +136,11 @@ public class Person {
         emails.remove(email);
     }
 
+    public int getVersion() {
+        return version;
+    }
 
+    public void setVersion(int version) {
+        this.version = version;
+    }
 }

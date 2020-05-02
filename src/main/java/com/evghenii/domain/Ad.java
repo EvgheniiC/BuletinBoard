@@ -1,6 +1,7 @@
 package com.evghenii.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -8,7 +9,10 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+
 @Entity
+@JsonIdentityInfo(generator = PropertyGenerator.class, property = "id")
 public class Ad {
 
     @Id
@@ -35,15 +39,10 @@ public class Ad {
     @JoinColumn(name = "rubric_fk_id")
     private Rubric rubric;
 
-    public Ad() {
-    }
+    @Version
+    private int version;
 
-    public Ad( String title, LocalDate date, String text, BigDecimal price, Rubric rubric) {
-        this.title = title;
-        this.date = date;
-        this.text = text;
-        this.price = price;
-        this.rubric = rubric;
+    public Ad() {
     }
 
     public int getId() {
@@ -100,5 +99,13 @@ public class Ad {
 
     public void setRubric(Rubric rubric) {
         this.rubric = rubric;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

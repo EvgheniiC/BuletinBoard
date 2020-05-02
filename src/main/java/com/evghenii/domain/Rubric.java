@@ -1,11 +1,16 @@
 package com.evghenii.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+import static com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+
 @Entity
+@JsonIdentityInfo(generator = PropertyGenerator.class, property = "id")
 public class Rubric {
 
     @Id
@@ -16,8 +21,11 @@ public class Rubric {
     @NotNull(message = "Rubric name cannot be null")
     private String name;
 
-    @OneToMany(mappedBy = "rubric", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "rubric", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
     private Set<Ad> ads = new HashSet<>();
+
+    @Version
+    private int version;
 
     public Rubric() {
     }
@@ -58,4 +66,11 @@ public class Rubric {
         ads.remove(ad);
     }
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
 }
