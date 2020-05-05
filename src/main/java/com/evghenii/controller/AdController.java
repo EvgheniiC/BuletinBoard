@@ -64,6 +64,11 @@ public class AdController {
         return adService.findAdInRubricById(id);
     }
 
+    @GetMapping(value = "/ads/in/rubrics")
+    public List<Ad> findAllAdInRubricByIds(@RequestParam(value="ids", required=true) List<Integer> ids) {
+        return adService.findAllAdInRubricByIds(ids);
+    }
+
     @DeleteMapping(value = "/ads/person/{personId}")
     public void deleteAllAdByPersonById(@PathVariable("personId") int id) {
         adService.deleteAllAdByPersonById(id);

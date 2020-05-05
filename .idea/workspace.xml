@@ -5,14 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/PersonController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/RubricController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/RubricController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/AdDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/AdDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLAdDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLAdDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/postgre/PostgreAdDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/postgre/PostgreAdDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Rubric.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Rubric.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/AdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/AdService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -255,7 +256,10 @@
       <workItem from="1588159623597" duration="469000" />
       <workItem from="1588329494277" duration="5033000" />
       <workItem from="1588363601542" duration="1065000" />
-      <workItem from="1588415930155" duration="4172000" />
+      <workItem from="1588415930155" duration="4335000" />
+      <workItem from="1588499574915" duration="5021000" />
+      <workItem from="1588594903121" duration="4880000" />
+      <workItem from="1588675493619" duration="9719000" />
     </task>
     <task id="LOCAL-00001" summary="Rubric,Test added">
       <created>1582628916116</created>
@@ -390,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587556890534</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Bugs,Treads,API name">
+      <created>1588422746754</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1588422746755</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,15 +439,16 @@
     <MESSAGE value="Rest Apim added" />
     <MESSAGE value="Rest Api added" />
     <MESSAGE value="Bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixed" />
+    <MESSAGE value="Bugs,Treads,API name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugs,Treads,API name" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java</url>
-          <line>78</line>
-          <option name="timeStamp" value="28" />
+          <line>68</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

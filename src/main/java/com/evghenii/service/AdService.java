@@ -18,6 +18,8 @@ public interface AdService extends CRUDService<Ad> {
 
     List<Ad> findByPrice(BigDecimal bigDecimal);
 
+    List<Ad> findAllAdInRubricByIds(List<Integer> ids);
+
     List<Ad> findAdInRubricById(int id);
 
     void deleteAllAdByPersonById(int id);

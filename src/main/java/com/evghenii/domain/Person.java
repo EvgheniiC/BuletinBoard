@@ -28,13 +28,16 @@ public class Person {
     @NotNull(message = "Password cannot be null")
     private String password;
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+            CascadeType.MERGE})
     private Set<Phone> phones = new HashSet<>();
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+            CascadeType.MERGE})
     private Set<Ad> ads = new HashSet<>();
 
-    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+            CascadeType.MERGE})
     private Set<Email> emails = new HashSet<>();
 
     @OneToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
@@ -43,6 +46,10 @@ public class Person {
 
     @Version
     private int version;
+
+    @OneToMany (mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+            CascadeType.MERGE})
+    private Set<SuitableAd> suitableAds = new HashSet<>();
 
     public Person() {
     }
@@ -143,4 +150,13 @@ public class Person {
     public void setVersion(int version) {
         this.version = version;
     }
+
+    public Set<SuitableAd> getSuitableAds() {
+        return suitableAds;
+    }
+
+    public void setSuitableAds(Set<SuitableAd> suitableAds) {
+        this.suitableAds = suitableAds;
+    }
+
 }

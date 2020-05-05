@@ -65,4 +65,9 @@ public class PostgreAdDAO implements AdDAO {
     public void deleteAllAdByPersonById(int id) {
 
     }
+
+    @Override
+    public List<Ad> findAllAdInRubricByIds(List<Integer> ids) {
+        return null;
+    }
 }

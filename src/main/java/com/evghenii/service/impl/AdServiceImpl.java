@@ -1,7 +1,6 @@
 package com.evghenii.service.impl;
 
 import com.evghenii.dao.AdDAO;
-import com.evghenii.dao.mysql.MySQLAdDAO;
 import com.evghenii.domain.Ad;
 import com.evghenii.service.AdService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,5 +76,10 @@ public class AdServiceImpl implements AdService {
     @Override
     public Ad findAdById(int id) {
         return adDAO.findAdById(id);
+    }
+
+    @Override
+    public List<Ad> findAllAdInRubricByIds(List<Integer> ids) {
+        return adDAO.findAllAdInRubricByIds(ids);
     }
 }

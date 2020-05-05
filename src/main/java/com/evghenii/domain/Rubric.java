@@ -21,11 +21,16 @@ public class Rubric {
     @NotNull(message = "Rubric name cannot be null")
     private String name;
 
-    @OneToMany(mappedBy = "rubric", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "rubric", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+            CascadeType.REFRESH})
     private Set<Ad> ads = new HashSet<>();
 
     @Version
     private int version;
+
+    @OneToMany (mappedBy = "rubric", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+            CascadeType.MERGE})
+    private Set<SuitableAd> suitableAds = new HashSet<>();
 
     public Rubric() {
     }
@@ -72,5 +77,13 @@ public class Rubric {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public Set<SuitableAd> getSuitableAds() {
+        return suitableAds;
+    }
+
+    public void setSuitableAds(Set<SuitableAd> suitableAds) {
+        this.suitableAds = suitableAds;
     }
 }

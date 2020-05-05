@@ -20,6 +20,8 @@ public interface AdDAO extends GenericCRUDDAO<Ad> {
 
     List<Ad> findAdInRubricById(int id);
 
+    List<Ad> findAllAdInRubricByIds(List<Integer> ids);
+
     void deleteAllAdByPersonById(int id);
 
 }

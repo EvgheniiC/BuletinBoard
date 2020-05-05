@@ -229,4 +229,30 @@ public class MySQLAdDAO implements AdDAO {
 
         logger.info("Ad deleteAllAdByPersonById");
     }
+
+    @Override
+    public List<Ad> findAllAdInRubricByIds(List<Integer> ids) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+
+        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
+
+        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
+
+        CriteriaBuilder.In<Integer> inClause = cb.in(adRoot.get("rubric").get("id"));
+
+//        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("rubric").get("id"), id));
+
+        for (Integer id : ids) {
+            inClause.value(id);
+        }
+        criteriaQuery.select(adRoot).where(inClause);
+
+        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
+
+        List<Ad> resultList = query.getResultList();
+
+        logger.info("Ad findAllAdInRubricByIds");
+
+        return resultList;
+    }
 }
