@@ -42,7 +42,17 @@ public class Ad {
     @Version
     private int version;
 
+    private boolean active;
+
     public Ad() {
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public int getId() {

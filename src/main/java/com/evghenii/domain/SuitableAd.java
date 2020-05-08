@@ -21,12 +21,10 @@ public class SuitableAd {
     @NotNull(message = "Name cannot be null")
     private String title;
 
-    @NotEmpty
-    @NotNull(message = "Name cannot be null")
+    //@Column(name = "pricefrom")
     private BigDecimal priceFrom;
 
-    @NotEmpty
-    @NotNull(message = "Name cannot be null")
+    //@Column(name = "priceto")
     private BigDecimal priceTo;
 
     @ManyToOne

@@ -3,6 +3,7 @@ package com.evghenii.service.impl;
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
 import com.evghenii.service.AdService;
+import com.evghenii.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -17,9 +18,12 @@ public class AdServiceImpl implements AdService {
 
     private final AdDAO adDAO;
 
+    private final EmailService emailService;
+
     @Autowired
-    public AdServiceImpl(@Qualifier("mySQLAdDAO") AdDAO adDAO) {
+    public AdServiceImpl(@Qualifier("mySQLAdDAO") AdDAO adDAO, EmailService emailService) {
         this.adDAO = adDAO;
+        this.emailService = emailService;
     }
 
     @Override
@@ -32,7 +36,6 @@ public class AdServiceImpl implements AdService {
         return adDAO.findByTitle(title);
     }
 
-
     @Override
     public List<Ad> findByPrice(BigDecimal bigDecimal) {
         return adDAO.findByPrice(bigDecimal);
@@ -41,6 +44,7 @@ public class AdServiceImpl implements AdService {
     @Override
     public void save(@Valid Ad ad) {
         adDAO.save(ad);
+        emailService.send(ad);
     }
 
     @Override

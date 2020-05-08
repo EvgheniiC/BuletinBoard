@@ -4,6 +4,7 @@ import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
 import com.evghenii.domain.Person;
 import com.evghenii.domain.Rubric;
+import com.evghenii.domain.SuitableAd;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -70,4 +71,4 @@ public class PostgreAdDAO implements AdDAO {
     public List<Ad> findAllAdInRubricByIds(List<Integer> ids) {
         return null;
     }
-}
+    }

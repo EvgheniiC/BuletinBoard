@@ -65,7 +65,7 @@ public class AdController {
     }
 
     @GetMapping(value = "/ads/in/rubrics")
-    public List<Ad> findAllAdInRubricByIds(@RequestParam(value="ids", required=true) List<Integer> ids) {
+    public List<Ad> findAllAdInRubricByIds(@RequestParam(value = "ids", required = true) List<Integer> ids) {
         return adService.findAllAdInRubricByIds(ids);
     }
 

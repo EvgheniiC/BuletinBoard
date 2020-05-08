@@ -47,7 +47,7 @@ public class Person {
     @Version
     private int version;
 
-    @OneToMany (mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
+    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
             CascadeType.MERGE})
     private Set<SuitableAd> suitableAds = new HashSet<>();
 
@@ -157,6 +157,14 @@ public class Person {
 
     public void setSuitableAds(Set<SuitableAd> suitableAds) {
         this.suitableAds = suitableAds;
+    }
+
+    public void addSuitableAdd(SuitableAd ad) {
+        suitableAds.add(ad);
+    }
+
+    public void removeSuitableAdd(SuitableAd ad) {
+        suitableAds.remove(ad);
     }
 
 }

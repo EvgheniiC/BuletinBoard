@@ -1,7 +1,8 @@
 package com.evghenii.service;
 
-import com.evghenii.domain.Email;
+import com.evghenii.domain.Ad;
 
-public interface EmailService extends CRUDService<Email> {
+public interface EmailService {
 
+    void send(Ad ad);
 }
