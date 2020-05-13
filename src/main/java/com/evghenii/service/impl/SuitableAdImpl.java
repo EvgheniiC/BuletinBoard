@@ -16,7 +16,7 @@ public class SuitableAdImpl implements SuitableAdService {
     private final SuitableAdDAO suitableAdDAOa;
 
     @Autowired
-    public SuitableAdImpl(@Qualifier("mySQLSuitableAd") SuitableAdDAO suitableAdDAOa) {
+    public SuitableAdImpl(@Qualifier("mySQLSuitableAdDAO") SuitableAdDAO suitableAdDAOa) {
         this.suitableAdDAOa = suitableAdDAOa;
     }
 

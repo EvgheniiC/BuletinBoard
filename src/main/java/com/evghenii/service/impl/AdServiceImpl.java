@@ -21,7 +21,8 @@ public class AdServiceImpl implements AdService {
     private final EmailService emailService;
 
     @Autowired
-    public AdServiceImpl(@Qualifier("mySQLAdDAO") AdDAO adDAO, EmailService emailService) {
+    public AdServiceImpl(@Qualifier("mySQLAdDAO") AdDAO adDAO,
+                         @Qualifier("emailServiceImpl") EmailService emailService) {
         this.adDAO = adDAO;
         this.emailService = emailService;
     }
