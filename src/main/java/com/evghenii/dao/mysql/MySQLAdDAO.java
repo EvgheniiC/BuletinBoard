@@ -4,6 +4,7 @@ import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -257,5 +258,16 @@ public class MySQLAdDAO implements AdDAO {
         logger.info("Ad findAllAdInRubricByIds");
 
         return resultList;
+    }
+
+    @Scheduled(cron = "0/5  *  *  *  *  *")
+    public void deleteAllInactiveAd() {
+
+        Query query = em.createQuery("DELETE  FROM Ad a WHERE a.active = 0");
+
+        query.executeUpdate();
+
+        logger.info("Ad deleteAllAdByPersonById");
+
     }
 }

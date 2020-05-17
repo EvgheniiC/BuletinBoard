@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f8163fe-def8-4237-9eb3-3fb31a2c1b63" name="Default Changelist" comment="new classe added(MySQLEmailDAO,MySQLSuitableAD),Controllers">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/EmailController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/RubricController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/RubricController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/EmailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/EmailDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/configuration/ConfigApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/configuration/ConfigApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/AdDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/AdDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/TestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/TestDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLEmailDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLEmailDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLSuitableAd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLSuitableAdDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Email.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLAdDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLAdDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/postgre/PostgreAdDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/postgre/PostgreAdDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/AdService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/AdService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/EmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/EmailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/SuitableAdImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/SuitableAdImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,6 +44,11 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="UseSpringData" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="LogFilters">
@@ -221,14 +225,16 @@
     <list>
       <item itemvalue="Application.BulletinBoardTest" />
       <item itemvalue="Application.TestMail" />
-      <item itemvalue="Tomcat Server.Tomcat 9.0.27" />
       <item itemvalue="Application.TestDAO" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.27" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.TestDAO" />
         <item itemvalue="Application.TestMail" />
         <item itemvalue="Application.BulletinBoardTest" />
+        <item itemvalue="Application.TestDAO" />
+        <item itemvalue="Application.TestMail" />
       </list>
     </recent_temporary>
   </component>
@@ -295,7 +301,12 @@
       <workItem from="1588850129174" duration="16158000" />
       <workItem from="1588932541805" duration="4945000" />
       <workItem from="1589103342085" duration="7395000" />
-      <workItem from="1589359537989" duration="6038000" />
+      <workItem from="1589359537989" duration="6192000" />
+      <workItem from="1589453261505" duration="3681000" />
+      <workItem from="1589471876142" duration="2441000" />
+      <workItem from="1589547265593" duration="780000" />
+      <workItem from="1589627903713" duration="1953000" />
+      <workItem from="1589705045232" duration="2985000" />
     </task>
     <task id="LOCAL-00001" summary="Rubric,Test added">
       <created>1582628916116</created>
@@ -458,7 +469,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588937206934</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="send Email for SuitableAd">
+      <created>1589370397060</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1589370397060</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,23 +517,8 @@
     <MESSAGE value="Bugs,Treads,API name" />
     <MESSAGE value="SuitableAd und methoden added" />
     <MESSAGE value="new classe added(MySQLEmailDAO,MySQLSuitableAD),Controllers" />
-    <option name="LAST_COMMIT_MESSAGE" value="new classe added(MySQLEmailDAO,MySQLSuitableAD),Controllers" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/EmailServiceImpl.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/controller/AdController.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="send Email for SuitableAd" />
+    <option name="LAST_COMMIT_MESSAGE" value="send Email for SuitableAd" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

@@ -2,14 +2,10 @@ package com.evghenii.dao.postgre;
 
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
-import com.evghenii.domain.Person;
-import com.evghenii.domain.Rubric;
-import com.evghenii.domain.SuitableAd;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class PostgreAdDAO implements AdDAO {
     @Override
@@ -71,4 +67,9 @@ public class PostgreAdDAO implements AdDAO {
     public List<Ad> findAllAdInRubricByIds(List<Integer> ids) {
         return null;
     }
+
+    @Override
+    public void deleteAllInactiveAd() {
+
     }
+}

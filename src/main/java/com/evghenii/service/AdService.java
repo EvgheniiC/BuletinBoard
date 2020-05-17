@@ -23,4 +23,6 @@ public interface AdService extends CRUDService<Ad> {
     void deleteAllAdByPersonById(int id);
 
     Ad findAdById(int id);
+
+    void deleteAllInactiveAd();
 }

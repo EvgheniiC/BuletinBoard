@@ -87,4 +87,9 @@ public class AdServiceImpl implements AdService {
     public List<Ad> findAllAdInRubricByIds(List<Integer> ids) {
         return adDAO.findAllAdInRubricByIds(ids);
     }
+
+    @Override
+    public void deleteAllInactiveAd() {
+        adDAO.deleteAllInactiveAd();
+    }
 }

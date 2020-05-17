@@ -24,4 +24,6 @@ public interface AdDAO extends GenericCRUDDAO<Ad> {
 
     void deleteAllAdByPersonById(int id);
 
+    void deleteAllInactiveAd();
+
 }

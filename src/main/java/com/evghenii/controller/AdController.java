@@ -88,4 +88,7 @@ public class AdController {
     public List<Ad> findAllAdByPersonByDate(@PathVariable("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate localDate) {
         return adService.findAllByDate(localDate);
     }
+
+    @DeleteMapping(value = "/ads/inactive")
+    public void deleteAllInactiveAd(){adService.deleteAllInactiveAd();}
 }

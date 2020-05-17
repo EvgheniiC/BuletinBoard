@@ -13,6 +13,7 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -27,6 +28,7 @@ import java.util.Properties;
 @ComponentScan(basePackages = "com.evghenii.*")
 @EnableTransactionManagement
 @EnableWebMvc
+@EnableScheduling
 public class ConfigApp implements WebMvcConfigurer {
 
     @Bean
