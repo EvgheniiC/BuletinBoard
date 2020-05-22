@@ -2,19 +2,13 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
+import com.evghenii.repository.AdRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -23,251 +17,81 @@ import java.util.List;
 @Transactional
 public class MySQLAdDAO implements AdDAO {
 
-    private static final Logger logger = LoggerFactory.getLogger(MySQLAdDAO.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MySQLAdDAO.class);
 
-    @PersistenceContext
-    private EntityManager em;
+    private final AdRepository adRepository;
+
+    public MySQLAdDAO(AdRepository adRepository) {
+        this.adRepository = adRepository;
+    }
 
     @Override
     public void save(Ad ad) {
 
-        em.persist(ad);
+        adRepository.save(ad);
 
-        logger.info("Ad save");
+        LOGGER.info("Ad save");
     }
 
     @Override
     public void update(Ad ad) {
 
-        Ad mergedAd = em.merge(ad);
+        Ad mergedAd = adRepository.save(ad);
 
-        em.persist(mergedAd);
+        adRepository.save(mergedAd);
 
-        logger.info("Ad update");
+        LOGGER.info("Ad update");
     }
 
     @Override
     public void deleteById(int id) {
-
-        Query query = em.createQuery("DELETE FROM Ad ad WHERE ad.id = :id");
-
-        query.setParameter("id", id);
-
-        query.executeUpdate();
-
-        logger.info("Ad deleteById");
+        adRepository.deleteById(id);
     }
 
     public List<Ad> findAll() {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        criteriaQuery.select(adRoot);
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-        /* TypedQuery<Ad> query = em.createQuery("FROM Ad a ", Ad.class);*/
-
-        List<Ad> list = query.getResultList();
-
-        logger.info("Ad findAll");
-
-        return list;
+        return adRepository.findAll();
     }
 
     public Ad findAdById(int id) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("id"), id));
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.id = :id", Ad.class);
-
-        query.setParameter("id", id);*/
-
-        Ad singleResult = query.getSingleResult();
-
-        logger.info("Ad findAdById");
-
-        return singleResult;
+        return adRepository.findById(id);
     }
 
     @Override
     public List<Ad> findAllByDate(LocalDate date) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("date"), date));
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-       /* TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.date = :date", Ad.class);
-
-        query.setParameter("date", date);*/
-
-        List<Ad> resultList = query.getResultList();
-
-        logger.info("Ad findAllByDate");
-
-        return resultList;
+        return adRepository.findAllByDate(date);
     }
 
     @Override
     public List<Ad> findByTitle(String title) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("title"), title));
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.title = :title", Ad.class);
-
-        query.setParameter("title", title);*/
-
-        List<Ad> resultList = query.getResultList();
-
-        logger.info("Ad findByTitle");
-
-        return resultList;
+        return adRepository.findByTitle(title);
     }
 
     @Override
     public List<Ad> findAllAdByPersonById(int id) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("person").get("id"), id));
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.person.id = :id", Ad.class);
-
-        query.setParameter("id", id);*/
-
-        List<Ad> resultList = query.getResultList();
-
-        logger.info("Ad findAllAdByPersonById");
-
-        return resultList;
-
+        return adRepository.findAllByPersonId(id);
     }
 
     @Override
     public List<Ad> findByPrice(BigDecimal bigDecimal) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("price"), bigDecimal));
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-        /*TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.price = :price", Ad.class);
-
-        query.setParameter("price", bigDecimal);*/
-
-        List<Ad> resultList = query.getResultList();
-
-        logger.info("Ad findByPrice");
-
-        return resultList;
+        return adRepository.findByPrice(bigDecimal);
     }
 
     @Override
     public List<Ad> findAdInRubricById(int id) {
-
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("rubric").get("id"), id));
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-       /* TypedQuery<Ad> query = em.createQuery("SELECT a FROM Ad a WHERE a.rubric.id = :rubricId", Ad.class);
-
-        query.setParameter("rubricId", id);*/
-
-        List<Ad> resultList = query.getResultList();
-
-        logger.info("Ad findAdInRubricById");
-
-        return resultList;
+        return adRepository.findByRubricId(id);
     }
 
     public void deleteAllAdByPersonById(int id) {
-
-        Query query = em.createQuery("DELETE  FROM Ad a WHERE a.person.id = :id");
-
-        query.setParameter("id", id);
-
-        query.executeUpdate();
-
-        logger.info("Ad deleteAllAdByPersonById");
+        adRepository.deleteAllByPersonId(id);
     }
 
     @Override
     public List<Ad> findAllAdInRubricByIds(List<Integer> ids) {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-
-        CriteriaQuery<Ad> criteriaQuery = cb.createQuery(Ad.class);
-
-        Root<Ad> adRoot = criteriaQuery.from(Ad.class);
-
-        CriteriaBuilder.In<Integer> inClause = cb.in(adRoot.get("rubric").get("id"));
-
-//        criteriaQuery.select(adRoot).where(cb.equal(adRoot.get("rubric").get("id"), id));
-
-        for (Integer id : ids) {
-            inClause.value(id);
-        }
-        criteriaQuery.select(adRoot).where(inClause);
-
-        TypedQuery<Ad> query = em.createQuery(criteriaQuery);
-
-        List<Ad> resultList = query.getResultList();
-
-        logger.info("Ad findAllAdInRubricByIds");
-
-        return resultList;
+        return adRepository.findAllByRubricIdIn(ids);
     }
 
-    @Scheduled(cron = "0/5  *  *  *  *  *")
+    @Scheduled(cron = "0 0/10  *  *  *  *")
     public void deleteAllInactiveAd() {
-
-        Query query = em.createQuery("DELETE  FROM Ad a WHERE a.active = 0");
-
-        query.executeUpdate();
-
-        logger.info("Ad deleteAllAdByPersonById");
-
+        adRepository.deleteAllInactiveAd();
     }
 }

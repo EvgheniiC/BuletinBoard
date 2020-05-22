@@ -90,5 +90,7 @@ public class AdController {
     }
 
     @DeleteMapping(value = "/ads/inactive")
-    public void deleteAllInactiveAd(){adService.deleteAllInactiveAd();}
+    public void deleteAllInactiveAd() {
+        adService.deleteAllInactiveAd();
+    }
 }

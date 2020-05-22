@@ -1,6 +1,12 @@
-1) Добавить Spring Data,удалить DAO
-2)
+1) Добавить Spring Data, переписать DAO -
+2) @Scheduled cron составить и потестить +
+3) задание по архитектуре
 
 
 
 
+1 Почему пишем final в MySQLAdDAO и т п?
+2 deletebyId в SuitubleAd,Ad не работает, deleteByPersonId
+3 save Person,
+4 как переписать findEmailForSending в query
+5

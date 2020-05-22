@@ -2,99 +2,64 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.RubricDAO;
 import com.evghenii.domain.Rubric;
+import com.evghenii.repository.RubricRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
 @Transactional
 public class MySQLRubricDAO implements RubricDAO {
 
-    private static final Logger logger = LoggerFactory.getLogger(MySQLRubricDAO.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MySQLRubricDAO.class);
 
-    @PersistenceContext
-    private EntityManager em;
+    private final RubricRepository rubricRepository;
+
+    public MySQLRubricDAO(RubricRepository rubricRepository) {
+        this.rubricRepository = rubricRepository;
+    }
 
     @Override
     public void save(Rubric rubric) {
 
-        em.persist(rubric);
+        rubricRepository.save(rubric);
 
-        logger.info("Rubric save");
-
+        LOGGER.info("Rubric save");
     }
 
     @Override
     public void update(Rubric rubric) {
 
-        Rubric mergeRubric = em.merge(rubric);
+        Rubric mergeRubric = rubricRepository.save(rubric);
 
-        em.persist(mergeRubric);
+        rubricRepository.save(mergeRubric);
 
-        logger.info("Rubric update");
-
+        LOGGER.info("Rubric update");
     }
 
     @Override
     public void deleteById(int id) {
 
-        Rubric rubric = em.find(Rubric.class, id);
+        rubricRepository.deleteById(id);
 
-        em.remove(rubric);
-
-        logger.info("Rubric deleteById");
+        LOGGER.info("Rubric deleteById");
     }
 
     public Rubric findRubricByName(String name) {
 
-        CriteriaBuilder cb = em.getCriteriaBuilder();
+        LOGGER.info("Rubric findRubricByName");
 
-        CriteriaQuery<Rubric> criteriaQuery = cb.createQuery(Rubric.class);
-
-        Root<Rubric> rubricRoot = criteriaQuery.from(Rubric.class);
-
-        criteriaQuery.select(rubricRoot).where(cb.equal(rubricRoot.get("name"), name));
-
-        TypedQuery<Rubric> query = em.createQuery(criteriaQuery);
-
-         /*TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r WHERE r.name = :name", Rubric.class);
-
-        query.setParameter("name", name);*/
-
-        Rubric rubric = query.getSingleResult();
-
-        logger.info("Rubric findRubricByName");
-
-        return rubric;
-
+        return rubricRepository.findByName(name);
     }
 
     public List<Rubric> findAll() {
 
-        CriteriaBuilder cb = em.getCriteriaBuilder();
+        LOGGER.info("Rubric findAll");
 
-        CriteriaQuery<Rubric> criteriaQuery = cb.createQuery(Rubric.class);
-
-        Root<Rubric> rubricRoot = criteriaQuery.from(Rubric.class);
-
-        criteriaQuery.select(rubricRoot);
-
-        TypedQuery<Rubric> query = em.createQuery(criteriaQuery);
-
-        /*TypedQuery<Rubric> query = em.createQuery("SELECT r FROM Rubric r", Rubric.class);*/
-
-        List<Rubric> resultList = query.getResultList();
-
-        logger.info("Rubric findAll");
-
-        return resultList;
+        return rubricRepository.findAll();
     }
 
 }
