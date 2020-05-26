@@ -72,4 +72,9 @@ public class PostgreAdDAO implements AdDAO {
     public void deleteAllInactiveAd() {
 
     }
+
+    @Override
+    public void deleteAdsByRubricId(int id) {
+
+    }
 }

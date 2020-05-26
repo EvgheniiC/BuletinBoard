@@ -1,6 +1,7 @@
 package com.evghenii.domain;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Phone {
@@ -16,6 +17,9 @@ public class Phone {
     @ManyToOne(optional = false)
     @JoinColumn(name = "person_fk_id")
     private Person person;
+
+    @Version
+    private int version;
 
     public Phone() {
     }
@@ -46,5 +50,20 @@ public class Phone {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Phone phone = (Phone) o;
+        return id == phone.id &&
+                phoneNumber.equals(phone.phoneNumber) &&
+                person.equals(phone.person);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, phoneNumber, person);
     }
 }

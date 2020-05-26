@@ -94,4 +94,9 @@ public class MySQLAdDAO implements AdDAO {
     public void deleteAllInactiveAd() {
         adRepository.deleteAllInactiveAd();
     }
+
+    @Override
+    public void deleteAdsByRubricId(int id) {
+        adRepository.deleteAllByRubricId(id);
+    }
 }

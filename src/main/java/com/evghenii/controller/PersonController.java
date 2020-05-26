@@ -21,7 +21,7 @@ public class PersonController {
         personService.save(person);
     }
 
-    @PutMapping(value = "/persons/update")
+    @PutMapping(value = "/persons")
     public void update(@RequestBody Person person) {
         personService.update(person);
     }

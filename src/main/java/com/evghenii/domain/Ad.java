@@ -1,18 +1,14 @@
 package com.evghenii.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
-import static com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
+import java.util.Objects;
 
 @Entity
-@JsonIdentityInfo(generator = PropertyGenerator.class, property = "id")
 public class Ad {
 
     @Id
@@ -117,5 +113,26 @@ public class Ad {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ad ad = (Ad) o;
+        return id == ad.id &&
+                version == ad.version &&
+                active == ad.active &&
+                title.equals(ad.title) &&
+                date.equals(ad.date) &&
+                text.equals(ad.text) &&
+                price.equals(ad.price) &&
+                person.equals(ad.person) &&
+                rubric.equals(ad.rubric);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, date, text, price, person, rubric, version, active);
     }
 }

@@ -1,7 +1,7 @@
 package com.evghenii.service.impl;
 
+import com.evghenii.dao.AdDAO;
 import com.evghenii.dao.RubricDAO;
-import com.evghenii.dao.mysql.MySQLRubricDAO;
 import com.evghenii.domain.Rubric;
 import com.evghenii.service.RubricService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,12 @@ import java.util.List;
 public class RubricServiceImp implements RubricService {
 
     private final RubricDAO rubricDAO;
+    private final AdDAO adDAO;
 
     @Autowired
-    public RubricServiceImp(@Qualifier("mySQLRubricDAO") RubricDAO rubricDAO) {
+    public RubricServiceImp(@Qualifier("mySQLRubricDAO") RubricDAO rubricDAO,@Qualifier("mySQLAdDAO") AdDAO adDAO) {
         this.rubricDAO = rubricDAO;
+        this.adDAO = adDAO;
     }
 
     @Override
@@ -34,6 +36,7 @@ public class RubricServiceImp implements RubricService {
 
     @Override
     public void deleteById(int id) {
+        adDAO.deleteAdsByRubricId(id);
         rubricDAO.deleteById(id);
     }
 

@@ -7,9 +7,10 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class SuitableAd {
 
     @Id
@@ -21,10 +22,8 @@ public class SuitableAd {
     @NotNull(message = "Name cannot be null")
     private String title;
 
-    //@Column(name = "pricefrom")
     private BigDecimal priceFrom;
 
-    //@Column(name = "priceto")
     private BigDecimal priceTo;
 
     @ManyToOne
@@ -34,6 +33,9 @@ public class SuitableAd {
     @ManyToOne
     @JoinColumn(name = "rubric_fk_id")
     private Rubric rubric;
+
+    @Version
+    private int version;
 
     public SuitableAd() {
     }
@@ -84,5 +86,23 @@ public class SuitableAd {
 
     public void setRubric(Rubric rubric) {
         this.rubric = rubric;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SuitableAd that = (SuitableAd) o;
+        return id == that.id &&
+                title.equals(that.title) &&
+                priceFrom.equals(that.priceFrom) &&
+                priceTo.equals(that.priceTo) &&
+                person.equals(that.person) &&
+                rubric.equals(that.rubric);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, priceFrom, priceTo, person, rubric);
     }
 }

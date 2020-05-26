@@ -1,5 +1,6 @@
 package com.evghenii.dao.mysql;
 
+/*
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -29,4 +30,4 @@ public class MySQLPersonDAOTest {
     @Test
     public void findAll() {
     }
-}
+}*/

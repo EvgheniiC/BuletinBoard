@@ -1,6 +1,9 @@
 package com.evghenii.dao;
 
 import com.evghenii.domain.Ad;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -26,4 +29,5 @@ public interface AdDAO extends GenericCRUDDAO<Ad> {
 
     void deleteAllInactiveAd();
 
+    void deleteAdsByRubricId(int id);
 }

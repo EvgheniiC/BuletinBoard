@@ -1,5 +1,6 @@
 package com.evghenii.service.impl;
 
+import com.evghenii.dao.AdDAO;
 import com.evghenii.dao.PersonDAO;
 import com.evghenii.dao.mysql.MySQLPersonDAO;
 import com.evghenii.domain.Person;
@@ -15,10 +16,12 @@ import java.util.List;
 public class PersonServiceImpl implements PersonService {
 
     private final PersonDAO personDAO;
+    private final AdDAO adDAO;
 
     @Autowired
-    public PersonServiceImpl(@Qualifier("mySQLPersonDAO") PersonDAO personDAO) {
+    public PersonServiceImpl(@Qualifier("mySQLPersonDAO") PersonDAO personDAO, @Qualifier("mySQLAdDAO") AdDAO adDAO) {
         this.personDAO = personDAO;
+        this.adDAO = adDAO;
     }
 
     @Override
@@ -37,6 +40,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void deleteById(int id) {
+        adDAO.deleteAllAdByPersonById(id);
         personDAO.deleteById(id);
     }
 

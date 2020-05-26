@@ -42,7 +42,6 @@ public class MySQLPersonDAO implements PersonDAO {
 
     @Override
     public void deleteById(int id) {
-
         personRepository.deleteById(id);
 
         LOGGER.info("Person deleteById");
