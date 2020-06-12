@@ -32,8 +32,16 @@ public class Email {
     public Email() {
     }
 
-    public Email(String email) {
-        this.email = email;
+    public Email(int id) {
+        this.id = id;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     public int getId() {

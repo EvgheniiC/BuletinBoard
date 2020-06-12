@@ -24,6 +24,10 @@ public class Phone {
     public Phone() {
     }
 
+    public Phone(int id) {
+        this.id = id;
+    }
+
     public Phone(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
@@ -50,6 +54,14 @@ public class Phone {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 
     @Override

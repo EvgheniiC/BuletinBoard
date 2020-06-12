@@ -1,6 +1,7 @@
 package com.evghenii.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.evghenii.serializator.PersonSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -9,10 +10,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
-
 @Entity
-@JsonIdentityInfo(generator = PropertyGenerator.class, property = "id")
+@JsonSerialize(using = PersonSerializer.class)
 public class Person {
 
     @Id
@@ -54,9 +53,8 @@ public class Person {
     public Person() {
     }
 
-    public Person(String name, String password) {
-        this.name = name;
-        this.password = password;
+    public Person(int id) {
+        this.id = id;
     }
 
     public int getId() {

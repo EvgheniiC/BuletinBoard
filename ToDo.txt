@@ -1,6 +1,12 @@
-1) Добавить Spring Data, переписать DAO +
-3) задание по архитектуре +
+1) Сериализатор и де - для Person und Ribric
 
+
+
+Handling exception
+
+DTO
+
+Pagination
 
 
 

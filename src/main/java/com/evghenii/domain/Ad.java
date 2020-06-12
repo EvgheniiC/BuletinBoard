@@ -1,6 +1,10 @@
 package com.evghenii.domain;
 
+import com.evghenii.deserializer.AdDeserializer;
+import com.evghenii.serializator.AdSerializer;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,6 +13,8 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
+@JsonDeserialize(using = AdDeserializer.class)
+@JsonSerialize(using = AdSerializer.class)
 public class Ad {
 
     @Id
@@ -41,6 +47,10 @@ public class Ad {
     private boolean active;
 
     public Ad() {
+    }
+
+    public Ad(int id) {
+        this.id = id;
     }
 
     public boolean isActive() {

@@ -1,16 +1,15 @@
 package com.evghenii.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.evghenii.serializator.RubricSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.fasterxml.jackson.annotation.ObjectIdGenerators.PropertyGenerator;
-
 @Entity
-@JsonIdentityInfo(generator = PropertyGenerator.class, property = "id")
+@JsonSerialize(using = RubricSerializer.class)
 public class Rubric {
 
     @Id
@@ -29,6 +28,10 @@ public class Rubric {
     private int version;
 
     public Rubric() {
+    }
+
+    public Rubric(int id) {
+        this.id = id;
     }
 
     public Rubric(String name) {
