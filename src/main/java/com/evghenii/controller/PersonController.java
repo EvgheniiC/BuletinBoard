@@ -1,6 +1,7 @@
 package com.evghenii.controller;
 
 import com.evghenii.domain.Person;
+import com.evghenii.dto.PersonDTO;
 import com.evghenii.service.PersonService;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,5 +45,11 @@ public class PersonController {
     @GetMapping(value = "/persons/{personId}")
     public Person findPersonById(@PathVariable("personId") int id) {
         return personService.findPersonById(id);
+    }
+
+    @GetMapping(value = "/persons/dto/{personId}")
+    public PersonDTO findPersonDTOById(@PathVariable("personId") int id) {
+       Person person = personService.findPersonById(id);
+       return new PersonDTO(person);
     }
 }

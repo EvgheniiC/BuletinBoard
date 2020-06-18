@@ -20,10 +20,6 @@ public class Rubric {
     @NotNull(message = "Rubric name cannot be null")
     private String name;
 
-    @OneToMany(mappedBy = "rubric", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
-            CascadeType.REFRESH})
-    private Set<Ad> ads = new HashSet<>();
-
     @Version
     private int version;
 
@@ -46,28 +42,12 @@ public class Rubric {
         this.id = id;
     }
 
-    public Set<Ad> getAds() {
-        return ads;
-    }
-
-    public void setAds(Set<Ad> ads) {
-        this.ads = ads;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void addAd(Ad ad) {
-        ads.add(ad);
-    }
-
-    public void removedAd(Ad ad) {
-        ads.remove(ad);
     }
 
     public int getVersion() {

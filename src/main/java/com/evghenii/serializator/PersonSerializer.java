@@ -41,11 +41,6 @@ public class PersonSerializer extends StdSerializer<Person> {
         gen.writeEndArray();
 
         gen.writeFieldName("add");
-        gen.writeStartArray();
-        for (Ad ad : person.getAds()) {
-            gen.writeNumber(ad.getId());
-        }
-        gen.writeEndArray();
 
         gen.writeFieldName("email");
         gen.writeStartArray();

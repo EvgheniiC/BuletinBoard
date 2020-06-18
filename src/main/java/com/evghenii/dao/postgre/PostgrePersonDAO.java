@@ -2,6 +2,7 @@ package com.evghenii.dao.postgre;
 
 import com.evghenii.dao.PersonDAO;
 import com.evghenii.domain.Person;
+import com.evghenii.dto.PersonDTO;
 
 import java.util.List;
 

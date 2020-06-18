@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f8163fe-def8-4237-9eb3-3fb31a2c1b63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/deserializer/AdDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/AdSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/PersonSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/RubricSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dto/PersonDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Address.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLPersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLPersonDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/postgre/PostgrePersonDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/dao/postgre/PostgrePersonDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Phone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Phone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Rubric.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Rubric.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/SuitableAd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/SuitableAd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/PersonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/PersonSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/PersonSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/RubricSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/RubricSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/PersonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/PersonServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -88,11 +88,11 @@
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.evghenii.dao.mysql" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.evghenii.dao.postgre" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\djoni\Desktop\Java\BulletinBoard" />
@@ -332,7 +332,13 @@
       <workItem from="1591721388685" duration="710000" />
       <workItem from="1591787627021" duration="6543000" />
       <workItem from="1591875258855" duration="4023000" />
-      <workItem from="1591960921945" duration="3228000" />
+      <workItem from="1591960921945" duration="3467000" />
+      <workItem from="1592124813848" duration="1672000" />
+      <workItem from="1592129315201" duration="187000" />
+      <workItem from="1592130274769" duration="101000" />
+      <workItem from="1592309352547" duration="3934000" />
+      <workItem from="1592393535762" duration="3445000" />
+      <workItem from="1592475948846" duration="451000" />
     </task>
     <task id="LOCAL-00001" summary="Rubric,Test added">
       <created>1582628916116</created>
@@ -523,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590489938123</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Serializer und Deserializer was added">
+      <created>1591964421077</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1591964421077</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -567,7 +580,8 @@
     <MESSAGE value="deleteAllInactiveAd() was added und Scheduled" />
     <MESSAGE value="Spring DATA(Repository) added" />
     <MESSAGE value="Bug fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixed" />
+    <MESSAGE value="Serializer und Deserializer was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Serializer und Deserializer was added" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />

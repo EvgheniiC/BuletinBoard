@@ -4,6 +4,7 @@ import com.evghenii.dao.AdDAO;
 import com.evghenii.dao.PersonDAO;
 import com.evghenii.dao.mysql.MySQLPersonDAO;
 import com.evghenii.domain.Person;
+import com.evghenii.dto.PersonDTO;
 import com.evghenii.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,7 +28,6 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void save(@Valid Person person) {
         person.getEmails().forEach(e -> e.setPerson(person));
-        person.getAds().forEach(e -> e.setPerson(person));
         person.getPhones().forEach(e -> e.setPerson(person));
         person.getAddress().setPerson(person);
         personDAO.save(person);

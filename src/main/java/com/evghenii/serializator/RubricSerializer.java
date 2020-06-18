@@ -28,12 +28,6 @@ public class RubricSerializer extends StdSerializer<Rubric> {
         gen.writeObjectField("version", rubric.getVersion());
         gen.writeFieldName("add");
 
-        gen.writeStartArray();
-        for (Ad ad : rubric.getAds()) {
-            gen.writeNumber(ad.getId());
-        }
-        gen.writeEndArray();
-
         gen.writeEndObject();
     }
 }

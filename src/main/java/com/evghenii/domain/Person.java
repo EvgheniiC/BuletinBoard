@@ -7,7 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,10 +32,6 @@ public class Person {
 
     @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
             CascadeType.MERGE})
-    private Set<Ad> ads = new HashSet<>();
-
-    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
-            CascadeType.MERGE})
     private Set<Email> emails = new HashSet<>();
 
     @OneToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE})
@@ -45,10 +40,6 @@ public class Person {
 
     @Version
     private int version;
-
-    @OneToMany(mappedBy = "person", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE,
-            CascadeType.MERGE})
-    private Set<SuitableAd> suitableAds = new HashSet<>();
 
     public Person() {
     }
@@ -105,64 +96,12 @@ public class Person {
         this.address = address;
     }
 
-    public Set<Ad> getAds() {
-        return ads;
-    }
-
-    public void setAds(Set<Ad> ads) {
-        this.ads = ads;
-    }
-
-    public void removedAd(Ad ad) {
-        ads.remove(ad);
-    }
-
-    public void addAd(Ad ad) {
-        ads.add(ad);
-    }
-
-    public void removeAllAd(List<Ad> ad) {
-        ads.removeAll(ad);
-    }
-
-    public void removePhone(Phone phone) {
-        phones.remove(phone);
-    }
-
-    public void addPhone(Phone phone) {
-        phones.add(phone);
-    }
-
-    public void addEmail(Email email) {
-        emails.add(email);
-    }
-
-    public void removeEmail(Email email) {
-        emails.remove(email);
-    }
-
     public int getVersion() {
         return version;
     }
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public Set<SuitableAd> getSuitableAds() {
-        return suitableAds;
-    }
-
-    public void setSuitableAds(Set<SuitableAd> suitableAds) {
-        this.suitableAds = suitableAds;
-    }
-
-    public void addSuitableAdd(SuitableAd ad) {
-        suitableAds.add(ad);
-    }
-
-    public void removeSuitableAdd(SuitableAd ad) {
-        suitableAds.remove(ad);
     }
 
 }

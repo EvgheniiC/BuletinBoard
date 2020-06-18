@@ -2,6 +2,7 @@ package com.evghenii.dao.mysql;
 
 import com.evghenii.dao.PersonDAO;
 import com.evghenii.domain.Person;
+import com.evghenii.dto.PersonDTO;
 import com.evghenii.repository.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
