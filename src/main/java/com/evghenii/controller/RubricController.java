@@ -45,6 +45,4 @@ public class RubricController {
     public Rubric findRubricByName(@PathVariable("rubricName") String name) {
         return rubricService.findRubricByName(name);
     }
-
-
 }

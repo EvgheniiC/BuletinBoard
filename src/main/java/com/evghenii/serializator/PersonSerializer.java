@@ -1,6 +1,5 @@
 package com.evghenii.serializator;
 
-import com.evghenii.domain.Ad;
 import com.evghenii.domain.Email;
 import com.evghenii.domain.Person;
 import com.evghenii.domain.Phone;

@@ -1,7 +1,7 @@
 package com.evghenii.domain;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.evghenii.serializator.SuitableAdSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-//@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+@JsonSerialize(using = SuitableAdSerializer.class)
 public class SuitableAd {
 
     @Id
@@ -108,13 +108,11 @@ public class SuitableAd {
         return id == that.id &&
                 title.equals(that.title) &&
                 priceFrom.equals(that.priceFrom) &&
-                priceTo.equals(that.priceTo) &&
-                person.equals(that.person) &&
-                rubric.equals(that.rubric);
+                priceTo.equals(that.priceTo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, priceFrom, priceTo, person, rubric);
+        return Objects.hash(id, title, priceFrom, priceTo);
     }
 }

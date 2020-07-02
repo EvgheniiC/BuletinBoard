@@ -31,8 +31,13 @@ public class SuitableAdController {
         suitableAdService.deleteById(id);
     }
 
-    @GetMapping(value = "/suitablead")
+    @GetMapping(value = "/suitableads")
     public List<SuitableAd> findAllAds() {
         return suitableAdService.findAll();
+    }
+
+    @GetMapping(value = "/suitablead/{title}")
+    public SuitableAd findByTitle(@PathVariable("title") String title ){
+        return suitableAdService.findByTitle(title);
     }
 }

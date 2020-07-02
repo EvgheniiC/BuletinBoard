@@ -1,10 +1,9 @@
-1) Сериализатор и де - для Person und Ribric
+1) Calcul PowerMock
+2) DTO use
 
 
 
 Handling exception
-
-DTO
 
 Pagination
 

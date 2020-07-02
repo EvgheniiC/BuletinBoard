@@ -11,4 +11,6 @@ public interface SuitableAdRepository extends JpaRepository<SuitableAd, Integer>
     @Query(value = "DELETE FROM SuitableAd suit  WHERE suit.id = :pid")
     @Modifying
     void deleteById(@Param("pid") int id);
+
+    SuitableAd findByTitle(String title);
 }

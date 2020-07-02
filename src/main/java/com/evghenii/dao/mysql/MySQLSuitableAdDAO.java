@@ -53,4 +53,12 @@ public class MySQLSuitableAdDAO implements SuitableAdDAO {
 
         return suitableAdRepository.findAll();
     }
+
+    @Override
+    public SuitableAd findByTitle(String title) {
+
+        LOGGER.info("SuitableAd findByName");
+
+        return suitableAdRepository.findByTitle(title);
+    }
 }

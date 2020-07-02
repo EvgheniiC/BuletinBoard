@@ -3,6 +3,7 @@ package com.evghenii.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
 public class Address {
@@ -81,5 +82,22 @@ public class Address {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return id == address.id &&
+                houseNumber == address.houseNumber &&
+                version == address.version &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(street, address.street);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, city, street, houseNumber, version);
     }
 }

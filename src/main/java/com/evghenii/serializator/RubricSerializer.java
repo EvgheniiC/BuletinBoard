@@ -1,6 +1,5 @@
 package com.evghenii.serializator;
 
-import com.evghenii.domain.Ad;
 import com.evghenii.domain.Rubric;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

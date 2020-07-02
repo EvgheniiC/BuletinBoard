@@ -39,4 +39,9 @@ public class SuitableAdImpl implements SuitableAdService {
     public void deleteById(int id) {
         suitableAdDAOa.deleteById(id);
     }
+
+    @Override
+    public SuitableAd findByTitle(String title) {
+        return suitableAdDAOa.findByTitle(title);
+    }
 }
