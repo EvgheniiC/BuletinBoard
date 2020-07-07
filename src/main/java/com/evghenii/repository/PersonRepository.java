@@ -9,4 +9,8 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
     Person findPersonByName(String name);
 
     Person findPersonById(int id);
+
+   // boolean existsById(int id);
+
+    boolean existsByName(String name);
 }

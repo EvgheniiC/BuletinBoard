@@ -50,6 +50,7 @@
                      date Date NOT NULL,
                      text Varchar(25) NOT NULL,
                      price DECIMAL NOT NULL,
+                     active BOOLEAN,
                      version INT,
                      rubric_fk_id INT,
                      person_fk_id INT

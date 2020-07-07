@@ -2,8 +2,10 @@ package com.evghenii.service.impl;
 
 import com.evghenii.dao.mysql.config.ConfigTest;
 import com.evghenii.domain.Rubric;
+import com.evghenii.repository.RubricRepository;
 import com.evghenii.service.RubricService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,71 +24,55 @@ public class RubricServiceImpTest {
     @Autowired
     private RubricService rubricService;
 
-    @Test
-    public void save() {
+    @Autowired
+    private RubricRepository rubricRepository;
+
+    @Before
+    public void init() {
 
         final Rubric rubric = new Rubric();
 
-        rubric.setName("Verkaufen");
+        rubric.setName("Kaufen");
         rubric.setVersion(1);
 
         rubricService.save(rubric);
 
-        final Rubric rubric1 = rubricService.findRubricByName("Verkaufen");
+    }
 
-        Assert.assertEquals(rubric, rubric1);
+    @Test
+    public void save() {
+
+        if (rubricRepository.count() == 1) {
+            Assert.assertTrue(rubricRepository.existsById(1));
+        }
 
     }
 
     @Test
     public void update() {
 
-        final Rubric rubric = new Rubric();
+        final Rubric rubric = rubricService.findRubricByName("Kaufen");
 
         rubric.setName("Kaufen");
-        rubric.setVersion(0);
+
         rubricService.update(rubric);
 
-        final Rubric rubric1 = rubricService.findRubricByName("Kaufen");
-
-        Assert.assertEquals(rubric, rubric1);
+        Assert.assertTrue(rubricRepository.existsByName("Kaufen"));
 
     }
 
     @Test
     public void deleteById() {
 
-        final Rubric rubric = new Rubric();
-
-        rubric.setName("Verkaufen");
-        rubric.setVersion(1);
-
-        rubricService.save(rubric);
-
-        final Rubric rubric1 = new Rubric();
-
-        rubric1.setName("Kaufen");
-        rubric1.setVersion(1);
-
-        rubricService.save(rubric1);
-
-        int sizeBefore = rubricService.findAll().size();
-
         rubricService.deleteById(1);
 
-        int sizeAfter = rubricService.findAll().size();
-
-        Assert.assertEquals(sizeBefore - 1, sizeAfter);
+        if (rubricRepository.count() == 0) {
+            Assert.assertFalse(rubricRepository.existsById(1));
+        }
     }
 
     @Test
     public void findAll() {
-        final Rubric rubric = new Rubric();
-
-        rubric.setName("Verkaufen");
-        rubric.setVersion(1);
-
-        rubricService.save(rubric);
 
         final Rubric rubric1 = new Rubric();
 
@@ -95,32 +81,23 @@ public class RubricServiceImpTest {
 
         rubricService.save(rubric1);
 
-        final Rubric rubric3 = new Rubric();
+        final Rubric rubric2 = new Rubric();
 
-        rubric3.setName("Verkau");
-        rubric3.setVersion(1);
+        rubric2.setName("Verkau");
+        rubric2.setVersion(1);
 
-        rubricService.save(rubric3);
+        rubricService.save(rubric2);
 
-        int size = rubricService.findAll().size();
-
-        Assert.assertEquals(size, 3);
+        Assert.assertEquals(3, rubricRepository.count());
 
     }
 
     @Test
-    public void findRubricByName() {// не уверен
+    public void findRubricByName() {
 
-        final Rubric rubric = new Rubric();
-
-        rubric.setName("Auto");
-        rubric.setVersion(1);
-
-        rubricService.save(rubric);
-
-        final Rubric rubric1 = rubricService.findRubricByName("Auto");
-
-        Assert.assertEquals(rubric, rubric1);
+        if (rubricRepository.count() == 1) {
+            Assert.assertTrue(rubricRepository.existsByName("Kaufen"));
+        }
 
     }
 }

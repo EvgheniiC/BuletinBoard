@@ -39,8 +39,6 @@ public class PersonSerializer extends StdSerializer<Person> {
         }
         gen.writeEndArray();
 
-        gen.writeFieldName("add");
-
         gen.writeFieldName("email");
         gen.writeStartArray();
         for (Email email : person.getEmails()) {

@@ -25,7 +25,6 @@ public class RubricSerializer extends StdSerializer<Rubric> {
         gen.writeObjectField("id", rubric.getId());
         gen.writeStringField("name", rubric.getName());
         gen.writeObjectField("version", rubric.getVersion());
-        gen.writeFieldName("add");
 
         gen.writeEndObject();
     }

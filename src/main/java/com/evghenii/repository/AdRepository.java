@@ -43,4 +43,12 @@ public interface AdRepository extends JpaRepository<Ad, Integer> {
     @Query(value = "DELETE FROM Ad ad WHERE ad.rubric.id = :pid")
     @Modifying
     void deleteAllByRubricId(@Param("pid") int id);
+
+    /*boolean existsById(int id);
+
+    boolean existsByName(String name);*/
+
+
+
+    boolean existsByTitle(String title);
 }

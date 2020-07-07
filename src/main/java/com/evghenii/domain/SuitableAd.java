@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-@JsonSerialize(using = SuitableAdSerializer.class)
+//@JsonSerialize(using = SuitableAdSerializer.class)
 public class SuitableAd {
 
     @Id

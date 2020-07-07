@@ -13,4 +13,11 @@ public interface SuitableAdRepository extends JpaRepository<SuitableAd, Integer>
     void deleteById(@Param("pid") int id);
 
     SuitableAd findByTitle(String title);
+
+    boolean existsById(int id);
+
+    boolean existsByTitle(String name);
+
+    SuitableAd findById(int id);
+
 }

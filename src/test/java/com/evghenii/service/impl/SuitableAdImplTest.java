@@ -5,11 +5,12 @@ import com.evghenii.domain.Address;
 import com.evghenii.domain.Person;
 import com.evghenii.domain.Rubric;
 import com.evghenii.domain.SuitableAd;
-import com.evghenii.repository.RubricRepository;
+import com.evghenii.repository.SuitableAdRepository;
 import com.evghenii.service.PersonService;
 import com.evghenii.service.RubricService;
 import com.evghenii.service.SuitableAdService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.math.BigDecimal;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ConfigTest.class)
@@ -38,13 +37,15 @@ public class SuitableAdImplTest {
     @Autowired
     private RubricService rubricService;
 
-    @Test
-    public void save() {
+    @Autowired
+    private SuitableAdRepository suitableAdRepository;
 
+    @Before
+    public void init() {
         final Person person = new Person();
         person.setVersion(1);
-        person.setPassword("111");
-        person.setName("wwwdsc");
+        person.setPassword("11111");
+        person.setName("Teo");
 
         final Address address = new Address();
         address.setCity("Kyiv");
@@ -63,69 +64,58 @@ public class SuitableAdImplTest {
         rubricService.save(rubric);
 
         final SuitableAd suitableAdBefore = new SuitableAd();
-        suitableAdBefore.setTitle("Auto Suche");
+        suitableAdBefore.setTitle("Auto");
         suitableAdBefore.setPriceFrom(BigDecimal.valueOf(100));
         suitableAdBefore.setPriceTo(BigDecimal.valueOf(10000));
-        suitableAdBefore.setRubric(rubric);
-        suitableAdBefore.setPerson(person);
-
+        suitableAdBefore.setRubric(rubricService.findRubricByName("Verkaufen"));
+        suitableAdBefore.setPerson(personService.findPersonByName("Teo"));
         service.save(suitableAdBefore);
+    }
 
-        int size = service.findAll().size();
+    @Test
+    public void save() {
 
-        Assert.assertEquals(1,size);
+        Assert.assertTrue(suitableAdRepository.existsById(1));
 
     }
 
     @Test
-    public void update() { // нужно сначала сохранять, а потом обнослять или сразу обновлять?
+    public void update() {
 
-        final Person person = new Person();
-        person.setVersion(1);
-        person.setPassword("111");
-        person.setName("wwwdsc");
+        final SuitableAd suitableAd = suitableAdRepository.findByTitle("Auto");
 
-        final Address address = new Address();
-        address.setCity("Kyiv");
-        address.setStreet("Lennin");
-        address.setHouseNumber(11);
-        address.setPerson(person);
-        person.setAddress(address);
+        suitableAd.setTitle("Suche etwas");
 
-        personService.save(person);
+        service.update(suitableAd);
 
-        final Rubric rubric = new Rubric();
-
-        rubric.setName("Verkaufen");
-        rubric.setVersion(1);
-
-        rubricService.save(rubric);
-
-        final SuitableAd suitableAdBefore = new SuitableAd();
-      //  suitableAdBefore.setTitle("Auto");
-        suitableAdBefore.setPriceFrom(BigDecimal.valueOf(100));
-        suitableAdBefore.setPriceTo(BigDecimal.valueOf(10000));
-        suitableAdBefore.setRubric(rubric);
-        suitableAdBefore.setPerson(person);
-      //  service.save(suitableAdBefore);
-
-        suitableAdBefore.setTitle("Suche");
-
-        service.update(suitableAdBefore);
-
-        final SuitableAd suitableAdAfter = service.findByTitle("Suche");
-
-//        Assert.assertEquals(suitableAdBefore,suitableAdAfter);
-        assertEquals(suitableAdBefore, suitableAdAfter);
+        Assert.assertTrue(suitableAdRepository.existsByTitle("Suche etwas"));
 
     }
 
     @Test
     public void findAll() {
+
+        final SuitableAd suitableAdBefore = new SuitableAd();
+        suitableAdBefore.setTitle("Möbel");
+        suitableAdBefore.setPriceFrom(BigDecimal.valueOf(500));
+        suitableAdBefore.setPriceTo(BigDecimal.valueOf(12000));
+        suitableAdBefore.setRubric(rubricService.findRubricByName("Verkaufen"));
+        suitableAdBefore.setPerson(personService.findPersonByName("Teo"));
+        service.save(suitableAdBefore);
+
+        Assert.assertEquals(2, suitableAdRepository.count());
+
     }
 
     @Test
     public void deleteById() {
+
+        service.deleteById(1);
+
+        if (suitableAdRepository.count() == 0) {
+            Assert.assertFalse(suitableAdRepository.existsById(1));
+        }
+
     }
 
 

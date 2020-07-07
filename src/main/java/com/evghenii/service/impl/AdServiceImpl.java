@@ -45,7 +45,7 @@ public class AdServiceImpl implements AdService {
     @Override
     public void save(@Valid Ad ad) {
         adDAO.save(ad);
-        emailService.send(ad);
+     //   emailService.send(ad);
     }
 
     @Override
