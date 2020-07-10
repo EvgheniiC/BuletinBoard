@@ -2,13 +2,13 @@ EN
 Bulletin board.
 An author can have several ads in different sections.
 The application should allow:
-1) Create: +
+1) Create:
 - A heading with / without announcements.
 - Announcement (name, publication date, announcement text, cost of service,
 author (telephones (separate entity), address (separate entity), name, e-mail (separate entity)).
-2) Edit the announcement, personal information of the author and the heading. +
-3) Delete the announcement / category. +
-4) Delete all ads of the author. +
+2) Edit the announcement, personal information of the author and the heading.
+3) Delete the announcement / category.
+4) Delete all ads of the author.
 5) Show ads from one category and several categories.? (Several) IN ???
 6) Filtration (author’s ads, by keyword, by date). 7777
 7) Display a certain number of ads on the page (pagination).
