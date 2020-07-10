@@ -31,6 +31,10 @@ public class Email {
         this.id = id;
     }
 
+    public Email(@NotEmpty @NotNull(message = "Email cannot be null") String email) {
+        this.email = email;
+    }
+
     public int getVersion() {
         return version;
     }

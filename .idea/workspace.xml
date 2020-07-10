@@ -2,25 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f8163fe-def8-4237-9eb3-3fb31a2c1b63" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/controller/EmailControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/AdServiceImplTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/PersonServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/deserializer/LocalDateDeserializator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/LocalDateSerializator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/controller/AdControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/controller/PersonControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/controller/RubricControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/controller/SuitableAdControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ToDo.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/controller/EmailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/deserializer/AdDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/deserializer/AdDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Ad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Email.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Email.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/SuitableAd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/domain/SuitableAd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/AdRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/AdRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/EmailRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/EmailRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/PersonRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/RubricRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/RubricRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/SuitableAdRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/repository/SuitableAdRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/PersonSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/PersonSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/RubricSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/RubricSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/service/impl/AdServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql_scripts/Create_table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql_scripts/Create_table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/EmailServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/EmailServiceImplTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/RubricServiceImpTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/RubricServiceImpTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/SuitableAdImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/SuitableAdImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/AdSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/evghenii/serializator/AdSerializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/evghenii/controller/EmailControllerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/AdServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/AdServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" beforeDir="false" afterPath="$PROJECT_DIR$/target/BulletinBoard-1.0-SNAPSHOT.war" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +49,8 @@
         <option value="AnnotationType" />
         <option value="FxmlFile" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -106,6 +106,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.evghenii.controller" />
       <recent name="com.evghenii.service.impl" />
       <recent name="com.evghenii.dao.mysql" />
     </key>
@@ -134,82 +135,82 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AdServiceImplTest.deleteAllInactiveAd">
-    <configuration name="AdServiceImplTest.deleteAllAdByPersonById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.SuitableAdControllerTest.findAllAds">
+    <configuration name="PersonControllerTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BulletinBoard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.evghenii.service.impl.*" />
+          <option name="PATTERN" value="com.evghenii.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.evghenii.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.evghenii.service.impl.AdServiceImplTest" />
-      <option name="METHOD_NAME" value="deleteAllAdByPersonById" />
+      <option name="PACKAGE_NAME" value="com.evghenii.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.evghenii.controller.PersonControllerTest" />
+      <option name="METHOD_NAME" value="update" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdServiceImplTest.deleteAllInactiveAd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SuitableAdControllerTest.deleteById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BulletinBoard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.evghenii.service.impl.*" />
+          <option name="PATTERN" value="com.evghenii.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.evghenii.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.evghenii.service.impl.AdServiceImplTest" />
-      <option name="METHOD_NAME" value="deleteAllInactiveAd" />
+      <option name="PACKAGE_NAME" value="com.evghenii.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.evghenii.controller.SuitableAdControllerTest" />
+      <option name="METHOD_NAME" value="deleteById" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdServiceImplTest.findAdById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SuitableAdControllerTest.findAllAds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BulletinBoard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.evghenii.service.impl.*" />
+          <option name="PATTERN" value="com.evghenii.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.evghenii.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.evghenii.service.impl.AdServiceImplTest" />
-      <option name="METHOD_NAME" value="findAdById" />
+      <option name="PACKAGE_NAME" value="com.evghenii.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.evghenii.controller.SuitableAdControllerTest" />
+      <option name="METHOD_NAME" value="findAllAds" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdServiceImplTest.findAdInRubricById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SuitableAdControllerTest.findByTitle" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BulletinBoard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.evghenii.service.impl.*" />
+          <option name="PATTERN" value="com.evghenii.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.evghenii.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.evghenii.service.impl.AdServiceImplTest" />
-      <option name="METHOD_NAME" value="findAdInRubricById" />
+      <option name="PACKAGE_NAME" value="com.evghenii.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.evghenii.controller.SuitableAdControllerTest" />
+      <option name="METHOD_NAME" value="findByTitle" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdServiceImplTest.findAllAdByPersonById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SuitableAdControllerTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BulletinBoard" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.evghenii.service.impl.*" />
+          <option name="PATTERN" value="com.evghenii.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.evghenii.service.impl" />
-      <option name="MAIN_CLASS_NAME" value="com.evghenii.service.impl.AdServiceImplTest" />
-      <option name="METHOD_NAME" value="findAllAdByPersonById" />
+      <option name="PACKAGE_NAME" value="com.evghenii.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.evghenii.controller.SuitableAdControllerTest" />
+      <option name="METHOD_NAME" value="update" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -289,20 +290,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.AdServiceImplTest.findAllAdByPersonById" />
-      <item itemvalue="JUnit.AdServiceImplTest.findAdInRubricById" />
-      <item itemvalue="JUnit.AdServiceImplTest.deleteAllAdByPersonById" />
-      <item itemvalue="JUnit.AdServiceImplTest.findAdById" />
       <item itemvalue="Tomcat Server.Tomcat 9.0.27" />
-      <item itemvalue="JUnit.AdServiceImplTest.deleteAllInactiveAd" />
+      <item itemvalue="JUnit.PersonControllerTest.update" />
+      <item itemvalue="JUnit.SuitableAdControllerTest.update" />
+      <item itemvalue="JUnit.SuitableAdControllerTest.deleteById" />
+      <item itemvalue="JUnit.SuitableAdControllerTest.findAllAds" />
+      <item itemvalue="JUnit.SuitableAdControllerTest.findByTitle" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AdServiceImplTest.deleteAllInactiveAd" />
-        <item itemvalue="JUnit.AdServiceImplTest.findAdById" />
-        <item itemvalue="JUnit.AdServiceImplTest.findAdInRubricById" />
-        <item itemvalue="JUnit.AdServiceImplTest.deleteAllAdByPersonById" />
-        <item itemvalue="JUnit.AdServiceImplTest.findAllAdByPersonById" />
+        <item itemvalue="JUnit.SuitableAdControllerTest.findAllAds" />
+        <item itemvalue="JUnit.SuitableAdControllerTest.findByTitle" />
+        <item itemvalue="JUnit.SuitableAdControllerTest.deleteById" />
+        <item itemvalue="JUnit.SuitableAdControllerTest.update" />
+        <item itemvalue="JUnit.PersonControllerTest.update" />
       </list>
     </recent_temporary>
   </component>
@@ -418,7 +419,11 @@
       <workItem from="1593964959300" duration="1877000" />
       <workItem from="1594030950191" duration="6636000" />
       <workItem from="1594053891351" duration="4915000" />
-      <workItem from="1594123359924" duration="1254000" />
+      <workItem from="1594123359924" duration="4964000" />
+      <workItem from="1594205646065" duration="10362000" />
+      <workItem from="1594291717339" duration="6398000" />
+      <workItem from="1594317811266" duration="2443000" />
+      <workItem from="1594378102069" duration="4266000" />
     </task>
     <task id="LOCAL-00001" summary="Rubric,Test added">
       <created>1582628916116</created>
@@ -630,7 +635,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593692321575</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="JUnit Tests was added">
+      <created>1594124697798</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1594124697798</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +662,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Dao added" />
     <MESSAGE value="added new methods to the classen DAO" />
     <MESSAGE value="added new methods to the classen DAO and Controller" />
     <MESSAGE value="PersonController added" />
@@ -675,20 +686,61 @@
     <MESSAGE value="Serializer und Deserializer was added" />
     <MESSAGE value="PersonDTO was added" />
     <MESSAGE value="JUnit Tests was added und SuitableAdSerialyzer" />
-    <option name="LAST_COMMIT_MESSAGE" value="JUnit Tests was added und SuitableAdSerialyzer" />
+    <MESSAGE value="JUnit Tests was added" />
+    <option name="LAST_COMMIT_MESSAGE" value="JUnit Tests was added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/controller/SuitableAdController.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/dao/mysql/MySQLSuitableAdDAO.java</url>
           <line>61</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/serializator/PersonSerializer.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/deserializer/AdDeserializer.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/evghenii/controller/AdControllerTest.java</url>
+          <line>117</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/evghenii/controller/AdControllerTest.java</url>
+          <line>107</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/evghenii/controller/AdControllerTest.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/evghenii/deserializer/AdDeserializer.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/evghenii/service/impl/AdServiceImplTest.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/evghenii/controller/AdControllerTest.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/evghenii/controller/AdControllerTest.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

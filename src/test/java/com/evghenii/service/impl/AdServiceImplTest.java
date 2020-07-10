@@ -50,7 +50,7 @@ public class AdServiceImplTest {
     @Before
     public void init() {
 
-        //MockitoAnnotations.initMocks(adService);
+        //MockitoAnnotations.initMocks(this);
 
         final Person person = new Person();
         person.setVersion(1);
@@ -88,7 +88,7 @@ public class AdServiceImplTest {
         ad.setPrice(BigDecimal.valueOf(12000));
         ad.setVersion(1);
         ad.setText("Ich Tausche");
-        ad.setDate(LocalDate.ofEpochDay(2014 - 10 - 10));
+        ad.setDate(LocalDate.of(2014,10,10));
         ad.setActive(false);
         ad.setPerson(person);
         ad.setRubric(rubric);
@@ -244,7 +244,7 @@ public class AdServiceImplTest {
     }
 
     @Test
-    public void deleteAllInactiveAd() {//Так?
+    public void deleteAllInactiveAd() {//как?
 
         adService.deleteAllInactiveAd();
 

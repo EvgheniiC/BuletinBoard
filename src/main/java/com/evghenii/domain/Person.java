@@ -48,6 +48,10 @@ public class Person {
         this.id = id;
     }
 
+    public Person(@NotEmpty @NotNull(message = "Name cannot be null") String name) {
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }

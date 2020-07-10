@@ -36,6 +36,10 @@ public class Address {
         this.id = id;
     }
 
+    public Address(@NotEmpty @NotNull(message = "City cannot be null") String city) {
+        this.city = city;
+    }
+
     public int getId() {
         return id;
     }

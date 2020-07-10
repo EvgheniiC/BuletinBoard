@@ -40,7 +40,8 @@ public class AdDeserializer extends StdDeserializer<Ad> {
         boolean active = node.get("active").asBoolean();
         String text = node.get("text").asText();
         String title = node.get("title").asText();
-        LocalDate date = LocalDate.parse(node.get("date").asText());
+        String dat = node.get("date").toString();
+        LocalDate date = LocalDate.parse(dat);
         BigDecimal price = new BigDecimal(node.get("price").asDouble());
 
         Rubric rubric = new Rubric(rubricId);
