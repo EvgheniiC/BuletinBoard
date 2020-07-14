@@ -1,9 +1,7 @@
 package com.evghenii.domain;
 
 import com.evghenii.deserializer.AdDeserializer;
-import com.evghenii.deserializer.LocalDateDeserializator;
 import com.evghenii.serializator.AdSerializer;
-import com.evghenii.serializator.LocalDateSerializator;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -27,9 +25,7 @@ public class Ad {
     @NotNull(message = "Title cannot be null")
     private String title;
 
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    @JsonDeserialize(using = LocalDateDeserializator.class)
-    @JsonSerialize(using = LocalDateSerializator.class)
+   @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate date;
 
     @NotNull(message = "Text cannot be null")

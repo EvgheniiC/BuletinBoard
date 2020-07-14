@@ -25,7 +25,6 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-//@ComponentScan(basePackages = {"com.evghenii.dao", "com.evghenii.service"})
 @ComponentScan(basePackages = "com.evghenii.*")
 @EnableTransactionManagement
 @EnableWebMvc
@@ -100,6 +99,5 @@ public class ConfigApp implements WebMvcConfigurer {
 
         return sender;
     }
-
 
 }

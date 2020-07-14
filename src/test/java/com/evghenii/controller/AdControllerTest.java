@@ -20,19 +20,18 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 import static org.junit.Assert.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = ConfigTest.class)
 @WebAppConfiguration
 public class AdControllerTest {
-
 
     @Mock
     private AdService adService;
@@ -70,9 +69,6 @@ public class AdControllerTest {
 
         Rubric rubric = new Rubric("Kauf");
 
-        DateTimeFormatter formatter
-                = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
-
         final Ad ad = new Ad();
         ad.setTitle("Panzer");
         ad.setText("Kaufe ein Panzer");
@@ -89,15 +85,48 @@ public class AdControllerTest {
     }
 
     @Test
-    public void findAllByDate() {
+    public void findAllByDate() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findAllByDate(ArgumentMatchers.any(LocalDate.class))).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/date/{date}","2020-12-12"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
-    public void findByTitle() {
+    public void findByTitle() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findByTitle(ArgumentMatchers.anyString())).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/title/{title}","Kaufe"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
-    public void findByPrice() {
+    public void findByPrice() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findByPrice(ArgumentMatchers.any(BigDecimal.class))).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/price/{price}",10000))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
@@ -116,46 +145,176 @@ public class AdControllerTest {
     }
 
     @Test
-    public void update() {
+    public void saveWithValidation() throws Exception {
+
+        Mockito.doNothing().when(adService).save(ArgumentMatchers.any(Ad.class));
+
+        final String json = new ObjectMapper().writeValueAsString(initAd());
+
+        mockMvc.perform(post("/ad/ads")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(json))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
-    public void deleteById() {
+    public void update() throws Exception {
+
+        Mockito.doNothing().when(adService).update(ArgumentMatchers.any(Ad.class));
+
+        final String json = new ObjectMapper().writeValueAsString(initAd());
+
+        mockMvc.perform(put("/ad/ads")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(json))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
-    public void findAllAds() {
+    public void deleteById() throws Exception {
+
+        Mockito.doNothing().when(adService).deleteById(ArgumentMatchers.anyInt());
+
+        mockMvc.perform(
+                delete("/ad/ads/{adId}",1))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
-    public void findAllAdByPersonById() {
+    public void findAllAds() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findAllAds()).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
-    public void findAdInRubricById() {
+    public void findAllAdByPersonById() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findAllAdByPersonById(ArgumentMatchers.anyInt())).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/person/{personId}", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(0));
+
     }
 
     @Test
-    public void findAllAdInRubricByIds() {
+    public void findAdInRubricById() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findAdInRubricById(ArgumentMatchers.anyInt())).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/rubrics/{rubricId}", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(0));
+
     }
 
     @Test
-    public void deleteAllAdByPersonById() {
+    public void findAllAdInRubricByIds() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findAllAdInRubricByIds(((ArgumentMatchers.anyList())))).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/in/rubrics"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(0));
+
     }
 
     @Test
-    public void findAdById() {
+    public void deleteAllAdByPersonById() throws Exception {
+
+        Mockito.doNothing().when(adService).deleteAllAdByPersonById(ArgumentMatchers.anyInt());
+
+        mockMvc.perform(
+                delete("/ad/ads/person/{personId}",1))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
     @Test
-    public void findAllAdByPersonByWord() {
+    public void findAdById() throws Exception {
+
+        Mockito.when(controller.findAdById(ArgumentMatchers.anyInt())).thenReturn(initAd());
+
+        mockMvc.perform(
+                get("/ad/ads/{adId}", 1))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("id").value(0));
+
     }
 
     @Test
-    public void findAllAdByPersonByDate() {
+    public void findAllAdByPersonByWord() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findAllAdByPersonByWord(ArgumentMatchers.anyString())).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/word/{word}", "Kaufe"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(0));
+
     }
 
     @Test
-    public void deleteAllInactiveAd() {
+    public void findAllAdByPersonByDate() throws Exception {
+
+        List<Ad> ads = new ArrayList<>();
+        ads.add(initAd());
+
+        Mockito.when(controller.findAllAdByPersonByDate(ArgumentMatchers.any(LocalDate.class))).thenReturn(ads);
+
+        mockMvc.perform(
+                get("/ad/ads/person/date/{date}", "Kaufe"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(0));
+
+    }
+
+    @Test
+    public void deleteAllInactiveAd() throws Exception {
+
+        Mockito.doNothing().when(adService).deleteAllInactiveAd();
+
+        mockMvc.perform(
+                delete("/ad/ads/inactive"))
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 }

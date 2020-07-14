@@ -26,18 +26,15 @@ public class AdSerializer extends StdSerializer<Ad> {
         gen.writeStringField("text", ad.getText());
         gen.writeStringField("title", ad.getTitle());
         gen.writeObjectField("version", ad.getVersion());
-        //gen.writeObjectField("person", ad.getPerson().getId());
         gen.writeObjectField("price", ad.getPrice());
         gen.writeObjectField("active", ad.isActive());
         gen.writeObjectField("rubric", ad.getRubric().getId());
-        gen.writeObjectField("date", ad.getDate());
+        gen.writeStringField("date", ad.getDate().toString());
         gen.writeObjectFieldStart("person");
              gen.writeObjectField("id", ad.getPerson().getId());
         gen.writeEndObject();
 
-
         gen.writeEndObject();
     }
-
 
 }

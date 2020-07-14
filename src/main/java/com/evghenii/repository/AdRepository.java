@@ -44,11 +44,7 @@ public interface AdRepository extends JpaRepository<Ad, Integer> {
     @Modifying
     void deleteAllByRubricId(@Param("pid") int id);
 
-    /*boolean existsById(int id);
-
-    boolean existsByName(String name);*/
-
-
+    boolean existsByDate(LocalDate date);
 
     boolean existsByTitle(String title);
 }

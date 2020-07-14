@@ -3,6 +3,7 @@ package com.evghenii.domain;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.util.Objects;
 
 @Entity
@@ -24,6 +25,7 @@ public class Address {
     private int houseNumber;
 
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @Positive
     private Person person;
 
     @Version

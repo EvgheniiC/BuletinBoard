@@ -101,6 +101,7 @@ public class AdServiceImplTest {
 
     @Test
     public void findAllByDate() {
+        Assert.assertTrue(adRepository.existsByDate(LocalDate.of(2014,10,10)));
     }
 
     @Test
