@@ -242,7 +242,7 @@ public class AdControllerTest {
         Mockito.when(controller.findAllAdInRubricByIds(((ArgumentMatchers.anyList())))).thenReturn(ads);
 
         mockMvc.perform(
-                get("/ad/ads/in/rubrics"))
+                get("/ad/ads/in/rubrics?ids=1"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(0));
@@ -299,7 +299,7 @@ public class AdControllerTest {
         Mockito.when(controller.findAllAdByPersonByDate(ArgumentMatchers.any(LocalDate.class))).thenReturn(ads);
 
         mockMvc.perform(
-                get("/ad/ads/person/date/{date}", "Kaufe"))
+                get("/ad/ads/person/date/{date}", "2018-10-10"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(0));

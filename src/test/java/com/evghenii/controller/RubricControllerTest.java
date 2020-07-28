@@ -3,11 +3,13 @@ package com.evghenii.controller;
 import com.evghenii.domain.Rubric;
 import com.evghenii.service.RubricService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.*;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
@@ -110,5 +112,17 @@ public class RubricControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(0))
                 .andExpect(jsonPath("name").value("Auto"));
+    }
+
+    @Test
+    public void shouldThrowException() throws Exception {
+
+        final MvcResult result = mockMvc.perform(
+                get("/rubric/get/error"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andReturn();
+
+        Assert.assertTrue(result.getResponse().getContentAsString().contains("There was exception"));
     }
 }

@@ -7,6 +7,7 @@ import com.evghenii.domain.Person;
 import com.evghenii.domain.Phone;
 import com.evghenii.service.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
@@ -151,5 +153,17 @@ public class PersonControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(0))
                 .andExpect(jsonPath("name").value("John"));
+    }
+
+    @Test
+    public void shouldThrowException() throws Exception {
+
+        final MvcResult result = mockMvc.perform(
+                get("/person/get/error"))
+                .andDo(print())
+                .andExpect(status().is4xxClientError())
+                .andReturn();
+
+        Assert.assertTrue(result.getResponse().getContentAsString().contains("There was exception"));
     }
 }
