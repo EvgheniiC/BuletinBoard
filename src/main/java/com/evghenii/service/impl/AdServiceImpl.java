@@ -2,10 +2,14 @@ package com.evghenii.service.impl;
 
 import com.evghenii.dao.AdDAO;
 import com.evghenii.domain.Ad;
+import com.evghenii.repository.AdRepository;
 import com.evghenii.service.AdService;
 import com.evghenii.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -20,11 +24,14 @@ public class AdServiceImpl implements AdService {
 
     private final EmailService emailService;
 
+    private final AdRepository adRepository;
+
     @Autowired
     public AdServiceImpl(@Qualifier("mySQLAdDAO") AdDAO adDAO,
-                         @Qualifier("emailServiceImpl") EmailService emailService) {
+                         @Qualifier("emailServiceImpl") EmailService emailService, AdRepository adRepository) {
         this.adDAO = adDAO;
         this.emailService = emailService;
+        this.adRepository = adRepository;
     }
 
     @Override
@@ -91,5 +98,18 @@ public class AdServiceImpl implements AdService {
     @Override
     public void deleteAllInactiveAd() {
         adDAO.deleteAllInactiveAd();
+    }
+
+    public List<Ad> getPersonPage(int page, int size, String sorting, String[] fields) {
+
+//        final Sort sort = Sort.by(Sort.Order.desc("id"));
+
+        final Sort sort = Sort.by(Sort.Direction.valueOf(sorting), fields);
+
+        final PageRequest request = PageRequest.of(page, size, sort);
+
+        final Page<Ad> all = adRepository.findAll(request);
+
+        return all.getContent();
     }
 }

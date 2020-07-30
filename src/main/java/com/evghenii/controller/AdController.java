@@ -93,4 +93,12 @@ public class AdController {
     public void deleteAllInactiveAd() {
         adService.deleteAllInactiveAd();
     }
+
+    @GetMapping(value = "/get/page/{page}/{size}/{sort}/{fields}")
+    public List<Ad> getPage(@PathVariable(name = "page") int page,
+                                @PathVariable(name = "size") int size,
+                                @PathVariable(name = "sort") String sort,
+                                @PathVariable(name = "fields") String[] fields) {
+        return adService.getPersonPage(page, size, sort, fields);
+    }
 }

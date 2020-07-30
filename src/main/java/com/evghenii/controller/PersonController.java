@@ -100,11 +100,6 @@ public class PersonController {
         return new PersonDTO(person);
     }
 
-    @GetMapping(value = "/get/error")
-    public void get() {
-        throw new IllegalArgumentException("There was exception");
-    }
-
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleException(IllegalArgumentException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);

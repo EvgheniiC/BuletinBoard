@@ -1,6 +1,8 @@
 package com.evghenii.dao;
 
 import com.evghenii.domain.Ad;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
