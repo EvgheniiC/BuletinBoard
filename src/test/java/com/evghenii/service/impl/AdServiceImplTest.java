@@ -48,7 +48,7 @@ public class AdServiceImplTest {
 
 
     @Before
-    public void init() {
+        public void init() {
 
         //MockitoAnnotations.initMocks(this);
 

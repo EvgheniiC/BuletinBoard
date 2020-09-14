@@ -5,6 +5,7 @@ import com.evghenii.dto.PersonDTO;
 import com.evghenii.service.PersonService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,6 +29,11 @@ public class PersonController {
 
     public PersonController(PersonService personService) {
         this.personService = personService;
+    }
+
+    @GetMapping("/print")
+    public void print() {
+        System.out.println("Inside PersonContoller");
     }
 
     @PostMapping(value = "/persons")
@@ -79,11 +85,13 @@ public class PersonController {
         personService.deleteById(id);
     }
 
+    @Secured("ROLE_USER")
     @GetMapping(value = "/persons")
     public List<Person> findAllPersons() {
         return personService.findAll();
     }
 
+    @Secured({"ROLE_ADMIN"})
     @GetMapping(value = "/person/{name}")
     public Person findPersonByName(@PathVariable("name") String name) {
         return personService.findPersonByName(name);
