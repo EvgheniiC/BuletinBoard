@@ -1,5 +1,6 @@
 package com.evghenii.configuration;
 
+import com.evghenii.configuration.security.SecurityConfig;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {

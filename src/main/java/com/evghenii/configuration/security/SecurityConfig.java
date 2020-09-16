@@ -1,42 +1,58 @@
-package com.evghenii.configuration;
+package com.evghenii.configuration.security;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@ComponentScan(basePackages = "com.evghenii")
+@Import(value = EncoderConfiguration.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+    private final UserDetailsService myService;
+
+    private final PasswordEncoder encoder;
+
+    public SecurityConfig(@Qualifier("myUserDetailService") UserDetailsService myService, PasswordEncoder encoder) {
+        this.myService = myService;
+        this.encoder = encoder;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-       http
-               .authorizeRequests()
-               .antMatchers("/login*")
-               .permitAll()
-               .anyRequest()
-               .authenticated()
-               .and()
-               .formLogin()
-               .defaultSuccessUrl("/mvc/person/print")
-               .and()
-               .logout();
+        http
+                .authorizeRequests()
+                .antMatchers("/login*")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .csrf().disable()
+                .formLogin()
+                .defaultSuccessUrl("/mvc/person/print")
+                .and()
+                .logout();
 
     }
 
     @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(myService)
+                .passwordEncoder(encoder);
+    }
+
+    /*@Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
       auth
               .inMemoryAuthentication()
@@ -50,5 +66,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
               .roles("USER", "ADMIN");
 
 
-    }
+    }*/
 }

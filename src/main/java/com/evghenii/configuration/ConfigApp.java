@@ -77,7 +77,7 @@ public class ConfigApp implements WebMvcConfigurer {
         adapter.setDatabase(Database.MYSQL);
         adapter.setShowSql(true);
         adapter.setDatabasePlatform("org.hibernate.dialect.MySQL8Dialect");
-        adapter.setGenerateDdl(false);
+        adapter.setGenerateDdl(true);
 
         return adapter;
     }
