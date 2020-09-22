@@ -25,7 +25,6 @@ public class Address {
     private int houseNumber;
 
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
-    @Positive
     private Person person;
 
     @Version
