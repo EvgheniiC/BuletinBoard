@@ -2,12 +2,12 @@ package com.evghenii.controller;
 
 import com.evghenii.domain.Rubric;
 import com.evghenii.service.RubricService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.Valid;
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Set;
 
@@ -15,18 +15,14 @@ import java.util.Set;
 @RequestMapping("rubric")
 public class RubricController {
 
-    private static Validator validator;
-
-    static {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-
-        validator = factory.getValidator();
-    }
+    private final Validator validator;
 
     private final RubricService rubricService;
 
-    public RubricController(RubricService rubricService) {
+    public RubricController(Validator validator, RubricService rubricService) {
+        this.validator = validator;
         this.rubricService = rubricService;
+
     }
 
     @PostMapping(value = "/rubrics")
@@ -47,7 +43,6 @@ public class RubricController {
             throw new IllegalArgumentException(builder.toString());
 
         }
-
         rubricService.save(rubric);
     }
 
@@ -69,7 +64,6 @@ public class RubricController {
             throw new IllegalArgumentException(builder.toString());
 
         }
-
         rubricService.update(rubric);
     }
 
@@ -92,10 +86,4 @@ public class RubricController {
     public Rubric findRubricByName(@PathVariable("rubricName") String name) {
         return rubricService.findRubricByName(name);
     }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handleException(IllegalArgumentException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
-    }
-
 }

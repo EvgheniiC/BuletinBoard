@@ -1,13 +1,13 @@
 package com.evghenii.controller;
 
-import com.evghenii.dao.mysql.config.ConfigTest;
+import com.evghenii.configuration.ConfigTest;
+import com.evghenii.controller.handlers.BoardExceptionHandler;
 import com.evghenii.domain.Address;
 import com.evghenii.domain.Email;
 import com.evghenii.domain.Person;
 import com.evghenii.domain.Phone;
 import com.evghenii.service.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,9 +17,10 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
+import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -38,6 +39,9 @@ public class PersonControllerTest {
     @Mock
     private PersonService personService;
 
+    @Mock
+    private Validator validator;
+
     @InjectMocks
     private PersonController controller;
 
@@ -46,7 +50,10 @@ public class PersonControllerTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
+        final StandaloneMockMvcBuilder builder = MockMvcBuilders.standaloneSetup(controller);
+        builder.setControllerAdvice(new BoardExceptionHandler());
+
+        mockMvc = builder.build();
     }
 
 
@@ -153,17 +160,5 @@ public class PersonControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(0))
                 .andExpect(jsonPath("name").value("John"));
-    }
-
-    @Test
-    public void shouldThrowException() throws Exception {
-
-        final MvcResult result = mockMvc.perform(
-                get("/person/get/error"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andReturn();
-
-        Assert.assertTrue(result.getResponse().getContentAsString().contains("There was exception"));
     }
 }

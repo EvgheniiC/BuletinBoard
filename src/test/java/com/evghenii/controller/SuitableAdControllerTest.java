@@ -1,5 +1,6 @@
 package com.evghenii.controller;
 
+import com.evghenii.controller.handlers.BoardExceptionHandler;
 import com.evghenii.domain.*;
 import com.evghenii.service.SuitableAdService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,6 +10,7 @@ import org.mockito.*;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -34,6 +36,8 @@ public class SuitableAdControllerTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
+        final StandaloneMockMvcBuilder builder = MockMvcBuilders.standaloneSetup(controller);
+        builder.setControllerAdvice(new BoardExceptionHandler());
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 

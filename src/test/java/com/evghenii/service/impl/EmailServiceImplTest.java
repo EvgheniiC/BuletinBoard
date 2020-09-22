@@ -1,11 +1,10 @@
 package com.evghenii.service.impl;
 
-import com.evghenii.dao.mysql.config.ConfigTest;
+import com.evghenii.configuration.ConfigTest;
 import com.evghenii.domain.Address;
 import com.evghenii.domain.Email;
 import com.evghenii.domain.Person;
 import com.evghenii.repository.EmailRepository;
-import com.evghenii.service.EmailService;
 import com.evghenii.service.PersonService;
 import org.junit.Assert;
 import org.junit.Before;

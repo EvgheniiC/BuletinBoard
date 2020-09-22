@@ -1,10 +1,9 @@
 package com.evghenii.controller;
 
-import com.evghenii.dao.mysql.config.ConfigTest;
+import com.evghenii.configuration.ConfigTest;
+import com.evghenii.controller.handlers.BoardExceptionHandler;
 import com.evghenii.domain.*;
 import com.evghenii.service.AdService;
-import com.fasterxml.jackson.core.ObjectCodec;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,13 +15,13 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
+import javax.validation.Validator;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -41,9 +40,15 @@ public class AdControllerTest {
 
     private MockMvc mockMvc;
 
+    @Mock
+    private Validator validator;
+
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
+        final StandaloneMockMvcBuilder builder = MockMvcBuilders.standaloneSetup(controller);
+        builder.setControllerAdvice(new BoardExceptionHandler());
+
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
 

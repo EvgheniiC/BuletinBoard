@@ -1,6 +1,6 @@
 package com.evghenii.service.impl;
 
-import com.evghenii.dao.mysql.config.ConfigTest;
+import com.evghenii.configuration.ConfigTest;
 import com.evghenii.domain.*;
 import com.evghenii.repository.AdRepository;
 import com.evghenii.service.AdService;
@@ -123,11 +123,9 @@ public class AdServiceImplTest {
 
     @Test
     public void save() {
-
         if (adRepository.count() == 1) {
             Assert.assertTrue(adRepository.existsById(1));
         }
-
     }
 
     @Test

@@ -3,13 +3,13 @@ package com.evghenii.controller;
 import com.evghenii.domain.Person;
 import com.evghenii.dto.PersonDTO;
 import com.evghenii.service.PersonService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.Valid;
+import javax.validation.Validator;
 import java.util.List;
 import java.util.Set;
 
@@ -17,18 +17,13 @@ import java.util.Set;
 @RequestMapping("person")
 public class PersonController {
 
-    private static Validator validator;
-
-    static {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-
-        validator = factory.getValidator();
-    }
+    private final Validator validator;
 
     private final PersonService personService;
 
-    public PersonController(PersonService personService) {
+    public PersonController(PersonService personService, Validator validator) {
         this.personService = personService;
+        this.validator = validator;
     }
 
     @GetMapping("/print")
@@ -106,10 +101,5 @@ public class PersonController {
     public PersonDTO findPersonDTOById(@PathVariable("personId") int id) {
         Person person = personService.findPersonById(id);
         return new PersonDTO(person);
-    }
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<String> handleException(IllegalArgumentException e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 }

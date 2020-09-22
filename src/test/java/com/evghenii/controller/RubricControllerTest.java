@@ -1,5 +1,6 @@
 package com.evghenii.controller;
 
+import com.evghenii.controller.handlers.BoardExceptionHandler;
 import com.evghenii.domain.Rubric;
 import com.evghenii.service.RubricService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,7 +12,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder;
 
+import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,10 +33,14 @@ public class RubricControllerTest {
 
     private MockMvc mockMvc;
 
+    @Mock
+    private Validator validator;
+
     @Before
     public void setUp() throws Exception {
-
         MockitoAnnotations.initMocks(this);
+        final StandaloneMockMvcBuilder builder = MockMvcBuilders.standaloneSetup(controller);
+        builder.setControllerAdvice(new BoardExceptionHandler());
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
 
     }
@@ -112,17 +119,5 @@ public class RubricControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("id").value(0))
                 .andExpect(jsonPath("name").value("Auto"));
-    }
-
-    @Test
-    public void shouldThrowException() throws Exception {
-
-        final MvcResult result = mockMvc.perform(
-                get("/rubric/get/error"))
-                .andDo(print())
-                .andExpect(status().is4xxClientError())
-                .andReturn();
-
-        Assert.assertTrue(result.getResponse().getContentAsString().contains("There was exception"));
     }
 }

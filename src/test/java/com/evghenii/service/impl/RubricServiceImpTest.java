@@ -1,6 +1,6 @@
 package com.evghenii.service.impl;
 
-import com.evghenii.dao.mysql.config.ConfigTest;
+import com.evghenii.configuration.ConfigTest;
 import com.evghenii.domain.Rubric;
 import com.evghenii.repository.RubricRepository;
 import com.evghenii.service.RubricService;

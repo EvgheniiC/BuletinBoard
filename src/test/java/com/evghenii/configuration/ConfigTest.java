@@ -1,4 +1,4 @@
-package com.evghenii.dao.mysql.config;
+package com.evghenii.configuration;
 
 
 import org.springframework.context.annotation.Bean;

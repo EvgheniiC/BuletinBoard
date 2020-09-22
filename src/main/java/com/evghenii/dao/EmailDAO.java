@@ -5,7 +5,7 @@ import com.evghenii.domain.Email;
 
 import java.util.List;
 
-public interface EmailDAO {
+public interface EmailDAO  {
 
     List<String> findEmailForSending(Ad ad);
 

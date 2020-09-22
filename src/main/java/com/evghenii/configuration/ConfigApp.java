@@ -3,12 +3,10 @@ package com.evghenii.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -22,7 +20,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "com.evghenii.*")
@@ -30,6 +27,7 @@ import java.util.Properties;
 @EnableWebMvc
 @EnableScheduling
 @EnableJpaRepositories(basePackages = "com.evghenii.repository")
+@Import({EmailConfig.class, ValidatorConfig.class})
 public class ConfigApp implements WebMvcConfigurer {
 
     @Bean
@@ -80,24 +78,6 @@ public class ConfigApp implements WebMvcConfigurer {
         adapter.setGenerateDdl(true);
 
         return adapter;
-    }
-
-    @Bean
-    public JavaMailSenderImpl mailSender() {
-        JavaMailSenderImpl sender = new JavaMailSenderImpl();
-        sender.setHost("smtp.gmail.com");
-        sender.setPort(587);
-        sender.setUsername("djonidjonivich@gmail.com");
-        sender.setPassword("Nehby1984!");
-
-        Properties properties = sender.getJavaMailProperties();
-
-        properties.put("mail.transport.protocol", "smtp");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
-        properties.put("mail.smtp.starttls.enable", "true");
-
-        return sender;
     }
 
 }

@@ -1,6 +1,6 @@
 package com.evghenii.service.impl;
 
-import com.evghenii.dao.mysql.config.ConfigTest;
+import com.evghenii.configuration.ConfigTest;
 import com.evghenii.domain.Address;
 import com.evghenii.domain.Person;
 import com.evghenii.domain.Rubric;

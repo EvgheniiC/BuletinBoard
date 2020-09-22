@@ -1,6 +1,7 @@
 package com.evghenii.repository;
 
 import com.evghenii.domain.Ad;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -30,6 +31,7 @@ public interface AdRepository extends JpaRepository<Ad, Integer> {
     @Modifying
     void deleteAllByPersonId(@Param("pid") int id);
 
+    @EntityGraph(attributePaths = {"person"})
     Ad findById(int id);
 
     @Modifying

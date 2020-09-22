@@ -26,7 +26,7 @@ public class SuitableAd {
 
     private BigDecimal priceTo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_fk_id")
     private Person person;
 

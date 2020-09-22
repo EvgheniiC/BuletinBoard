@@ -33,7 +33,7 @@ public class Ad {
 
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_fk_id")
     private Person person;
 
