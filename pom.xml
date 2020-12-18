@@ -37,7 +37,6 @@
             <artifactId>spring-test</artifactId>
             <version>5.2.4.RELEASE</version>
             <scope>test</scope>
-
         </dependency>
 
         <dependency>
